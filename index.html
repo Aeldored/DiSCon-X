@@ -264,6 +264,98 @@
       opacity: 1;
       transform: scale(1.2);
     }
+    /* Base colors for dark mode */
+    .dark {
+      color-scheme: dark;
+    }
+      
+    /* Background colors */
+    .dark body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+    
+    /* Override specific Tailwind classes in dark mode */
+    .dark .bg-white {
+      background-color: #1e293b !important;
+    }
+    
+    .dark .bg-gray-50 {
+      background-color: #0f172a !important;
+    }
+    
+    .dark .bg-gray-100 {
+      background-color: #1e293b !important;
+    }
+    
+    /* Text colors */
+    .dark .text-gray-500,
+    .dark .text-gray-600,
+    .dark .text-gray-700,
+    .dark .text-gray-800 {
+      color: #cbd5e1 !important;
+    }
+    
+    /* Header specific styles */
+    .dark header {
+      background-color: #1e293b !important;
+    }
+    
+    .dark header .text-gray-700 {
+      color: #cbd5e1 !important;
+    }
+    
+    /* Fix feature cards */
+    .dark .feature-card {
+      background-color: #1e293b !important;
+    }
+    
+    /* Fix sections */
+    .dark section.bg-white,
+    .dark section.bg-gray-50,
+    .dark section.bg-gray-100 {
+      background-color: #0f172a !important;
+    }
+    
+    /* Borders */
+    .dark .border,
+    .dark .border-gray-200,
+    .dark .border-gray-300 {
+      border-color: #475569 !important;
+    }
+    
+    /* Form fields */
+    .dark input,
+    .dark select,
+    .dark textarea {
+      background-color: #334155 !important;
+      color: #f1f5f9 !important;
+      border-color: #475569 !important;
+    }
+    
+    /* Mobile menu */
+    .dark #mobile-menu {
+      background-color: #1e293b !important;
+    }
+    
+    .dark #mobile-menu a {
+      color: #f1f5f9 !important;
+    }
+    
+    .dark #mobile-menu a:hover {
+      background-color: #334155 !important;
+    }
+    
+    /* Auth modal */
+    .dark #auth-modal > div {
+      background-color: #1e293b !important;
+      color: #f1f5f9 !important;
+    }
+    
+    /* Gradient background */
+    .dark .gradient-bg {
+      background: linear-gradient(135deg, #1e40af, #4338ca) !important;
+    }
   </style>
   </head>
 
@@ -2944,6 +3036,61 @@
         </div>
       </div>
     </main>
+    <script>
+      // Get the dark mode toggle and HTML element
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const htmlElement = document.documentElement;
+      
+      // Check for saved preference in localStorage
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        enableDarkMode();
+      }
+      
+      // Set up the toggle functionality
+      if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+          if (htmlElement.classList.contains('dark')) {
+            disableDarkMode();
+          } else {
+            enableDarkMode();
+          }
+        });
+      }
+      
+      // Function to enable dark mode
+      function enableDarkMode() {
+        // Add 'dark' class to html element (for Tailwind)
+        htmlElement.classList.add('dark');
+        
+        // Update toggle icon
+        const icon = darkModeToggle.querySelector('i');
+        if (icon) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+          darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+        }
+        
+        // Save preference to localStorage
+        localStorage.setItem('darkMode', 'enabled');
+      }
+      
+      // Function to disable dark mode
+      function disableDarkMode() {
+        // Remove 'dark' class from html element
+        htmlElement.classList.remove('dark');
+        
+        // Update toggle icon
+        const icon = darkModeToggle.querySelector('i');
+        if (icon) {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+          darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        }
+        
+        // Save preference to localStorage
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    </script>
     <script src="discon-x-landing-scripts.js"></script>
   </body>
 </html>

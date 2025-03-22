@@ -13,172 +13,258 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-      :root {
-        --primary: #2563eb;
-        --secondary: #4f46e5;
-        --accent: #10b981;
-        --dark: #1e293b;
-        --light: #f8fafc;
+    :root {
+      --primary: #2563eb;
+      --secondary: #4f46e5;
+      --accent: #10b981;
+      --dark: #1e293b;
+      --light: #f8fafc;
+    }
+  
+    body {
+      font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
+    }
+  
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+  
+    .btn-primary {
+      background-color: var(--primary);
+      transition: all 0.3s ease;
+    }
+  
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px rgba(79, 70, 229, 0.2);
+    }
+  
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+  
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav-link {
+      position: relative;
+    }
+  
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+  
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  
+    /* Accessibility */
+    .dark-mode {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #475569;
+    }
+  
+    /* Default (light) mode variable defaults */
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+  
+    /* Apply theme variables to elements */
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  
+    .dark-mode header,
+    .dark-mode .mobile-menu,
+    .dark-mode .feature-card,
+    .dark-mode .auth-modal > div,
+    .dark-mode .bg-white {
+      background-color: var(--bg-secondary) !important;
+      color: var(--text-primary) !important;
+    }
+  
+    .dark-mode .bg-gray-50,
+    .dark-mode .bg-gray-100 {
+      background-color: var(--bg-tertiary) !important;
+    }
+  
+    .dark-mode .text-gray-500,
+    .dark-mode .text-gray-600,
+    .dark-mode .text-gray-700,
+    .dark-mode .text-gray-800 {
+      color: var(--text-secondary) !important;
+    }
+  
+    .dark-mode .border-gray-200,
+    .dark-mode .border-gray-300 {
+      border-color: var(--border-color) !important;
+    }
+  
+    .dark-mode .shadow-sm,
+    .dark-mode .shadow-lg,
+    .dark-mode .shadow-xl {
+      --tw-shadow-color: rgba(0, 0, 0, 0.3);
+    }
+  
+    .dark-mode .btn-primary {
+      background-color: var(--primary);
+    }
+  
+    .dark-mode .btn-primary:hover {
+      background-color: var(--secondary);
+    }
+  
+    /* Form fields in dark mode */
+    .dark-mode input,
+    .dark-mode select,
+    .dark-mode textarea {
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      border-color: var(--border-color);
+    }
+  
+    .dark-mode input::placeholder,
+    .dark-mode textarea::placeholder {
+      color: var(--text-muted);
+    }
+  
+    /* Navigation in dark mode */
+    .dark-mode nav .nav-link {
+      color: var(--text-secondary);
+    }
+  
+    .dark-mode nav .nav-link:hover {
+      color: var(--primary);
+    }
+  
+    /* Custom form labels for a11y */
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+  
+    /* Custom animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-
-      body {
-        font-family: "Inter", sans-serif;
-        scroll-behavior: smooth;
-      }
-
-      .gradient-bg {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-      }
-
-      .btn-primary {
-        background-color: var(--primary);
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        background-color: var(--secondary);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px rgba(79, 70, 229, 0.2);
-      }
-
-      .feature-card {
-        transition: all 0.3s ease;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .nav-link {
-        position: relative;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -4px;
-        left: 0;
-        background-color: var(--accent);
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      /* Accessibility */
-      .dark-mode {
-        background-color: #0f172a;
-        color: #f1f5f9;
-      }
-
-      /* Custom form labels for a11y */
-      .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-      }
-
-      /* Custom animations */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes pulse-slow {
-        0%,
-        100% {
-          opacity: 0.3;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.6;
-          transform: scale(1.1);
-        }
-      }
-
-      @keyframes pulse-medium {
-        0%,
-        100% {
-          opacity: 0.3;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.6;
-          transform: scale(1.15);
-        }
-      }
-
-      @keyframes pulse-fast {
-        0%,
-        100% {
-          opacity: 0.3;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.6;
-          transform: scale(1.2);
-        }
-      }
-
-      .animate-pulse-slow {
-        animation: pulse-slow 5s infinite ease-in-out;
-      }
-
-      .animate-pulse-medium {
-        animation: pulse-medium 4s infinite ease-in-out;
-      }
-
-      .animate-pulse-fast {
-        animation: pulse-fast 3s infinite ease-in-out;
-      }
-      .animate-fadeIn {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .hero-content {
-          text-align: center;
-        }
-      }
-
-      /* For the mobile menu toggle */
-      .mobile-menu-open {
-        max-height: 500px;
+      to {
         opacity: 1;
+        transform: translateY(0);
       }
-
-      /* Carousel Styles */
-      .carousel-container {
-        width: 100%;
-        overflow: hidden;
+    }
+  
+    @keyframes pulse-slow {
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scale(1);
       }
-
-      .carousel-track {
-        width: 100%;
-        display: flex;
+      50% {
+        opacity: 0.6;
+        transform: scale(1.1);
       }
-
-      .carousel-slide {
-        width: 100%;
-        flex-shrink: 0;
+    }
+  
+    @keyframes pulse-medium {
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scale(1);
       }
-
-      .carousel-indicators button.active {
-        opacity: 1;
+      50% {
+        opacity: 0.6;
+        transform: scale(1.15);
+      }
+    }
+  
+    @keyframes pulse-fast {
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
         transform: scale(1.2);
       }
-    </style>
+    }
+  
+    .animate-pulse-slow {
+      animation: pulse-slow 5s infinite ease-in-out;
+    }
+  
+    .animate-pulse-medium {
+      animation: pulse-medium 4s infinite ease-in-out;
+    }
+  
+    .animate-pulse-fast {
+      animation: pulse-fast 3s infinite ease-in-out;
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.5s ease forwards;
+    }
+  
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-content {
+        text-align: center;
+      }
+    }
+  
+    /* For the mobile menu toggle */
+    .mobile-menu-open {
+      max-height: 500px;
+      opacity: 1;
+    }
+  
+    /* Carousel Styles */
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+    }
+  
+    .carousel-track {
+      width: 100%;
+      display: flex;
+    }
+  
+    .carousel-slide {
+      width: 100%;
+      flex-shrink: 0;
+    }
+  
+    .carousel-indicators button.active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  </style>
   </head>
 
   <body class="bg-gray-50">

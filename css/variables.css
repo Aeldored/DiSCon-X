@@ -1,0 +1,83 @@
+/**
+ * DiSCon-X - CSS Variables
+ * This file contains all the CSS variables used throughout the application
+ */
+
+ :root {
+    /* Color Palette */
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --secondary: #4f46e5;
+    --secondary-dark: #4338ca;
+    --accent: #10b981;
+    --accent-dark: #059669;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --dark: #1e293b;
+    --light: #f8fafc;
+  
+    --text-primary-light: #0f172a;
+
+    /* Background Colors */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    
+    /* Text Colors */
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    
+    /* Border Colors */
+    --border-color: #e2e8f0;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-index layers */
+    --z-below: -1;
+    --z-normal: 1;
+    --z-above: 10;
+    --z-modal: 50;
+    --z-top: 100;
+    
+    /* Typography */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Spacing standardization */
+    /* Map Tailwind spacing to our variables */
+    --spacing-1: 0.25rem;   /* Tailwind's: p-1, m-1 */
+    --spacing-2: 0.5rem;    /* Tailwind's: p-2, m-2 */
+    --spacing-3: 0.75rem;   /* Tailwind's: p-3, m-3 */
+    --spacing-4: 1rem;      /* Tailwind's: p-4, m-4 */
+    --spacing-6: 1.5rem;    /* Tailwind's: p-6, m-6 */
+    --spacing-8: 2rem;      /* Tailwind's: p-8, m-8 */
+    --spacing-12: 3rem;     /* Tailwind's: p-12, m-12 */
+    --spacing-16: 4rem;     /* Tailwind's: p-16, m-16 */
+
+  }

@@ -1,0 +1,126 @@
+<!-- Contact Section Component -->
+<div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div>
+          <h2 id="contact-title" class="text-3xl font-bold mb-6">Get in Touch</h2>
+        <p class="text-gray-600 mb-8">
+          Have questions or feedback about DiSCon-X? We'd love to hear from you. Fill out the form or contact us directly using the information below.
+        </p>
+  
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">DICT-CALABARZON Regional Office</h3>
+              <p class="text-gray-600">
+                No. IV Telecom Rd Brgy, Brgy Telecom Rd <br />
+                Batangas, 4200 Batangas
+              </p>
+            </div>
+          </div>
+  
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fas fa-phone-alt text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Phone Support</h3>
+              <p class="text-gray-600">
+                Main: (049) 123-4567<br />
+                Technical Support: (049) 765-4321
+              </p>
+            </div>
+          </div>
+  
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+              <i class="fas fa-envelope text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Email</h3>
+              <p class="text-gray-600">
+                General Inquiries: info@discon-x.gov.ph<br />
+                Support: support@discon-x.gov.ph
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="mt-8 flex space-x-4">
+          <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-blue-800 text-white flex items-center justify-center hover:bg-blue-900 transition-colors">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+  
+      <div>
+        <div class="contact-form-container">
+          <h3 class="text-2xl font-bold mb-6">Send us a Message</h3>
+          <form id="contact-form">
+            <div class="mb-4">
+              <label for="name" class="form-label text-gray-700">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+  
+            <div class="mb-4">
+              <label for="email" class="form-label text-gray-700">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your email address"
+                required
+              />
+            </div>
+  
+            <div class="mb-4">
+              <label for="subject" class="form-label text-gray-700">Subject</label>
+              <select
+                id="subject"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="" disabled selected>Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="technical">Technical Support</option>
+                <option value="feedback">Feedback</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+  
+            <div class="mb-6">
+              <label for="message" class="form-label text-gray-700">Message</label>
+              <textarea
+                id="message"
+                class="w-full p-3 border border-gray-300 rounded-lg h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Type your message here..."
+                required
+              ></textarea>
+            </div>
+  
+            <button type="submit" class="w-full btn-primary py-3 px-6 rounded-lg text-white font-medium">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

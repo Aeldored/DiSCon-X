@@ -1,0 +1,224 @@
+/**
+ * DiSCon-X - Responsive CSS
+ * This file contains responsive design styles and media queries
+ */
+
+/* Extra Small Devices (phones, less than 640px) */
+@media (max-width: 639.98px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .hero-content-container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .hero-content-container > div:first-child {
+      order: 1;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-content-container > div:last-child {
+      order: 2;
+    }
+    
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-content p {
+      font-size: 1rem;
+    }
+    
+    .search-section-container {
+      margin-top: -2rem;
+      padding: 1rem;
+    }
+    
+    .feature-card {
+      padding: 1.5rem;
+    }
+    
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+    
+    .contact-form-container {
+      padding: 1.5rem;
+    }
+    
+    /* Stack buttons in mobile view */
+    .btn-group-stacked-mobile {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .btn-group-stacked-mobile > * {
+      margin-bottom: 0.75rem;
+      width: 100%;
+    }
+    
+    /* Fix spacing in mobile */
+    .section-mobile-spacing {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    
+    /* Center text in mobile */
+    .mobile-text-center {
+      text-align: center;
+    }
+    
+    /* Full width in mobile */
+    .mobile-w-full {
+      width: 100%;
+    }
+    
+    /* Adjust grid for mobile */
+    .grid-cols-1-mobile {
+      grid-template-columns: 1fr;
+    }
+    
+    /* Space between items in mobile */
+    .mobile-gap-4 {
+      gap: 1rem;
+    }
+    
+    /* Smaller font sizes for mobile */
+    .mobile-text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .mobile-text-base {
+      font-size: 1rem;
+    }
+    
+    .mobile-text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .mobile-text-xl {
+      font-size: 1.25rem;
+    }
+    
+    .mobile-text-2xl {
+      font-size: 1.5rem;
+    }
+    
+    /* Adjust margins for mobile */
+    .mobile-my-4 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .mobile-mb-6 {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  /* Small Devices (tablets, 640px and up) */
+  @media (min-width: 640px) and (max-width: 767.98px) {
+    .container {
+      max-width: 640px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.25rem;
+    }
+    
+    /* Adjust grid for small tablets */
+    .grid-cols-2-sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Medium Devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    .container {
+      max-width: 768px;
+    }
+    
+    /* Two columns on medium screens */
+    .grid-cols-2-md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Large Devices (desktops, 1024px and up) */
+  @media (min-width: 1024px) and (max-width: 1279.98px) {
+    .container {
+      max-width: 1024px;
+    }
+    
+    /* Three columns on large screens */
+    .grid-cols-3-lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Extra Large Devices (large desktops, 1280px and up) */
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+    
+    /* Four columns on extra large screens */
+    .grid-cols-4-xl {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  /* Print styles */
+  @media print {
+    body {
+      font-size: 12pt;
+      color: #000;
+      background-color: #fff;
+    }
+    
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+    
+    /* Hide non-essential elements */
+    header, 
+    footer, 
+    #mobile-menu, 
+    #auth-modal,
+    .no-print {
+      display: none !important;
+    }
+    
+    /* Expand all content */
+    .faq-content {
+      display: block !important;
+    }
+    
+    /* Remove backgrounds and shadows */
+    .gradient-bg,
+    .feature-card,
+    .testimonial-card,
+    .contact-form-container {
+      background: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Add page breaks where needed */
+    h2, h3 {
+      page-break-after: avoid;
+    }
+    
+    img {
+      page-break-inside: avoid;
+    }
+    
+    /* Ensure good contrast */
+    .text-gray-500,
+    .text-gray-600,
+    .text-gray-700 {
+      color: #333 !important;
+    }
+  }

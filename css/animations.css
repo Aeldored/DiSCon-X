@@ -1,0 +1,201 @@
+/**
+ * DiSCon-X - Animations CSS
+ * This file contains animations and transitions used throughout the application
+ */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  /* Use animation delay to create a staggered effect */
+  .animate-fadeIn[style*="animation-delay"] {
+    opacity: 0;
+  }
+  
+  /* Pulse Animations (Different speeds) */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes pulse-medium {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.15);
+    }
+  }
+  
+  @keyframes pulse-fast {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.2);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 5s infinite ease-in-out;
+  }
+  
+  .animate-pulse-medium {
+    animation: pulse-medium 4s infinite ease-in-out;
+  }
+  
+  .animate-pulse-fast {
+    animation: pulse-fast 3s infinite ease-in-out;
+  }
+  
+  /* Bounce Animation */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-bounce {
+    animation: bounce 2s infinite ease-in-out;
+  }
+  
+  /* Spin Animation */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin {
+    animation: spin 10s linear infinite;
+  }
+  
+  /* Ping Animation */
+  @keyframes ping {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  
+  /* Entrance Animations for Scroll Observer */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Entrance animations for different directions */
+  .animate-from-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-from-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-from-bottom {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-from-top {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  /* Apply animation to visible elements */
+  .animate-from-left.animate-visible,
+  .animate-from-right.animate-visible,
+  .animate-from-bottom.animate-visible,
+  .animate-from-top.animate-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+  
+  /* Scale Animations */
+  .animate-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .animate-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Button hover animations */
+  .btn-hover-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .btn-hover-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Underline animation for links */
+  .link-underline {
+    position: relative;
+  }
+  
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  .link-underline:hover::after {
+    width: 100%;
+  }

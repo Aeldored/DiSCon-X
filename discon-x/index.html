@@ -1,0 +1,3186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiSCon-X | DICT-CALABARZON Secure Connect</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #4f46e5;
+        --accent: #10b981;
+        --dark: #1e293b;
+        --light: #f8fafc;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px rgba(79, 70, 229, 0.2);
+      }
+
+      .feature-card {
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Accessibility */
+      .dark-mode {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #475569;
+      }
+
+      /* Default (light) mode variable defaults */
+      :root {
+        --bg-primary: #f8fafc;
+        --bg-secondary: #ffffff;
+        --bg-tertiary: #f1f5f9;
+        --text-primary: #0f172a;
+        --text-secondary: #334155;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+      }
+
+      /* Apply theme variables to elements */
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .dark-mode header,
+      .dark-mode .mobile-menu,
+      .dark-mode .feature-card,
+      .dark-mode .auth-modal > div,
+      .dark-mode .bg-white {
+        background-color: var(--bg-secondary) !important;
+        color: var(--text-primary) !important;
+      }
+
+      .dark-mode .bg-gray-50,
+      .dark-mode .bg-gray-100 {
+        background-color: var(--bg-tertiary) !important;
+      }
+
+      .dark-mode .text-gray-500,
+      .dark-mode .text-gray-600,
+      .dark-mode .text-gray-700,
+      .dark-mode .text-gray-800 {
+        color: var(--text-secondary) !important;
+      }
+
+      .dark-mode .border-gray-200,
+      .dark-mode .border-gray-300 {
+        border-color: var(--border-color) !important;
+      }
+
+      .dark-mode .shadow-sm,
+      .dark-mode .shadow-lg,
+      .dark-mode .shadow-xl {
+        --tw-shadow-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .dark-mode .btn-primary {
+        background-color: var(--primary);
+      }
+
+      .dark-mode .btn-primary:hover {
+        background-color: var(--secondary);
+      }
+
+      /* Form fields in dark mode */
+      .dark-mode input,
+      .dark-mode select,
+      .dark-mode textarea {
+        background-color: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+      }
+
+      .dark-mode input::placeholder,
+      .dark-mode textarea::placeholder {
+        color: var(--text-muted);
+      }
+
+      /* Navigation in dark mode */
+      .dark-mode nav .nav-link {
+        color: var(--text-secondary);
+      }
+
+      .dark-mode nav .nav-link:hover {
+        color: var(--primary);
+      }
+
+      /* Custom form labels for a11y */
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      /* Custom animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse-slow {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.1);
+        }
+      }
+
+      @keyframes pulse-medium {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.15);
+        }
+      }
+
+      @keyframes pulse-fast {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.2);
+        }
+      }
+
+      .animate-pulse-slow {
+        animation: pulse-slow 5s infinite ease-in-out;
+      }
+
+      .animate-pulse-medium {
+        animation: pulse-medium 4s infinite ease-in-out;
+      }
+
+      .animate-pulse-fast {
+        animation: pulse-fast 3s infinite ease-in-out;
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .hero-content {
+          text-align: center;
+        }
+      }
+
+      /* For the mobile menu toggle */
+      .mobile-menu-open {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      /* Carousel Styles */
+      .carousel-container {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        width: 100%;
+        display: flex;
+      }
+
+      .carousel-slide {
+        width: 100%;
+        flex-shrink: 0;
+      }
+
+      .carousel-indicators button.active {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      /* Base colors for dark mode */
+      .dark {
+        color-scheme: dark;
+      }
+
+      /* Background colors */
+      .dark body {
+        background-color: #0f172a;
+        color: #f1f5f9;
+      }
+
+      /* Override specific Tailwind classes in dark mode */
+      .dark .bg-white {
+        background-color: #1e293b !important;
+      }
+
+      .dark .bg-gray-50 {
+        background-color: #0f172a !important;
+      }
+
+      .dark .bg-gray-100 {
+        background-color: #1e293b !important;
+      }
+
+      /* Text colors */
+      .dark .text-gray-500,
+      .dark .text-gray-600,
+      .dark .text-gray-700,
+      .dark .text-gray-800 {
+        color: #cbd5e1 !important;
+      }
+
+      /* Header specific styles */
+      .dark header {
+        background-color: #1e293b !important;
+      }
+
+      .dark header .text-gray-700 {
+        color: #cbd5e1 !important;
+      }
+
+      /* Fix feature cards */
+      .dark .feature-card {
+        background-color: #1e293b !important;
+      }
+
+      /* Fix sections */
+      .dark section.bg-white,
+      .dark section.bg-gray-50,
+      .dark section.bg-gray-100 {
+        background-color: #0f172a !important;
+      }
+
+      /* Borders */
+      .dark .border,
+      .dark .border-gray-200,
+      .dark .border-gray-300 {
+        border-color: #475569 !important;
+      }
+
+      /* Form fields */
+      .dark input,
+      .dark select,
+      .dark textarea {
+        background-color: #334155 !important;
+        color: #f1f5f9 !important;
+        border-color: #475569 !important;
+      }
+
+      /* Mobile menu */
+      .dark #mobile-menu {
+        background-color: #1e293b !important;
+      }
+
+      .dark #mobile-menu a {
+        color: #f1f5f9 !important;
+      }
+
+      .dark #mobile-menu a:hover {
+        background-color: #334155 !important;
+      }
+
+      /* Auth modal */
+      .dark #auth-modal > div {
+        background-color: #1e293b !important;
+        color: #f1f5f9 !important;
+      }
+
+      /* Gradient background */
+      .dark .gradient-bg {
+        background: linear-gradient(135deg, #1e40af, #4338ca) !important;
+      }
+      .dark {
+        color-scheme: dark;
+      }
+      .dark body {
+        background-color: #0f172a;
+        color: #f1f5f9;
+      }
+      .dark section:not(.bg-gray-900) .bg-white {
+        background-color: #1e293b !important;
+      }
+
+      .dark section:not(.bg-gray-900) .bg-gray-50 {
+        background-color: #0f172a !important;
+      }
+
+      .dark section:not(.bg-gray-900) .bg-gray-100 {
+        background-color: #1e293b !important;
+      }
+      .dark header .text-gray-500,
+      .dark header .text-gray-600,
+      .dark header .text-gray-700,
+      .dark header .text-gray-800,
+      .dark section:not(.bg-gray-900) .text-gray-500,
+      .dark section:not(.bg-gray-900) .text-gray-600,
+      .dark section:not(.bg-gray-900) .text-gray-700,
+      .dark section:not(.bg-gray-900) .text-gray-800 {
+        color: #cbd5e1 !important;
+      }
+      .dark header {
+        background-color: #1e293b !important;
+      }
+
+      .dark header .text-gray-700 {
+        color: #cbd5e1 !important;
+      }
+
+      /* Fix feature cards */
+      .dark .feature-card {
+        background-color: #1e293b !important;
+      }
+
+      /* Fix landing page sections only */
+      .dark section.bg-white:not(.admin-dashboard-section),
+      .dark section.bg-gray-50:not(.admin-dashboard-section),
+      .dark section.bg-gray-100:not(.admin-dashboard-section) {
+        background-color: #0f172a !important;
+      }
+
+      /* Borders */
+      .dark header .border,
+      .dark header .border-gray-200,
+      .dark header .border-gray-300,
+      .dark section:not(.bg-gray-900) .border,
+      .dark section:not(.bg-gray-900) .border-gray-200,
+      .dark section:not(.bg-gray-900) .border-gray-300 {
+        border-color: #475569 !important;
+      }
+
+      /* Form fields - exclude dashboard forms */
+      .dark section:not(.bg-gray-900) input,
+      .dark section:not(.bg-gray-900) select,
+      .dark section:not(.bg-gray-900) textarea {
+        background-color: #334155 !important;
+        color: #f1f5f9 !important;
+        border-color: #475569 !important;
+      }
+
+      /* Mobile menu */
+      .dark #mobile-menu {
+        background-color: #1e293b !important;
+      }
+
+      .dark #mobile-menu a {
+        color: #f1f5f9 !important;
+      }
+
+      .dark #mobile-menu a:hover {
+        background-color: #334155 !important;
+      }
+
+      /* Auth modal */
+      .dark #auth-modal > div {
+        background-color: #1e293b !important;
+        color: #f1f5f9 !important;
+      }
+
+      /* Gradient background */
+      .dark .gradient-bg {
+        background: linear-gradient(135deg, #1e40af, #4338ca) !important;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Skip to main content for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-blue-600 focus:text-white focus:z-50"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Header & Navigation -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+      <div class="container mx-auto px-4 py-3">
+        <nav class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="#" class="flex items-center">
+              <i class="fas fa-shield-alt text-blue-600 text-2xl mr-2"></i>
+              <span class="font-bold text-xl text-gray-800"
+                >DiSCon-<span class="text-blue-600">X</span></span
+              >
+            </a>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#features"
+              class="nav-link text-gray-700 hover:text-blue-600 transition-colors"
+              >Features</a
+            >
+            <a
+              href="#how-it-works"
+              class="nav-link text-gray-700 hover:text-blue-600 transition-colors"
+              >How It Works</a
+            >
+            <a
+              href="#testimonials"
+              class="nav-link text-gray-700 hover:text-blue-600 transition-colors"
+              >Testimonials</a
+            >
+            <a
+              href="#faq"
+              class="nav-link text-gray-700 hover:text-blue-600 transition-colors"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-gray-700 hover:text-blue-600 transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Authentication Buttons -->
+          <div class="hidden md:flex items-center space-x-4">
+            <button
+              id="login-btn"
+              class="px-4 py-2 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors"
+            >
+              Login
+            </button>
+            <button
+              id="signup-btn"
+              class="px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
+            >
+              Sign Up
+            </button>
+            <!-- Accessibility Toggle -->
+            <button
+              id="dark-mode-toggle"
+              class="p-2 rounded-full text-gray-600 hover:bg-gray-100"
+              aria-label="Toggle dark mode"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-btn"
+              class="p-2 rounded-md text-gray-600 hover:bg-gray-100"
+              aria-label="Toggle menu"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div
+          id="mobile-menu"
+          class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out"
+        >
+          <div class="py-4 space-y-3">
+            <a
+              href="#features"
+              class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md"
+              >Features</a
+            >
+            <a
+              href="#how-it-works"
+              class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md"
+              >How It Works</a
+            >
+            <a
+              href="#testimonials"
+              class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md"
+              >Testimonials</a
+            >
+            <a
+              href="#faq"
+              class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md"
+              >Contact</a
+            >
+            <div class="pt-2 flex flex-col space-y-2">
+              <button
+                class="w-full py-2 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors"
+              >
+                Login
+              </button>
+              <button
+                class="w-full py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="overflow-hidden">
+      <!-- Hero Section -->
+      <section class="pt-32 pb-20 gradient-bg relative">
+        <!-- Floating Elements -->
+        <div
+          class="absolute top-10 left-10 w-12 h-12 bg-blue-400 rounded-full opacity-50 animate-bounce"
+        ></div>
+        <div
+          class="absolute bottom-16 right-20 w-16 h-16 bg-pink-500 rounded-lg opacity-40 animate-spin"
+        ></div>
+        <div
+          class="absolute top-24 right-8 w-20 h-20 bg-green-300 rounded-full opacity-60 animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-8 left-12 w-10 h-10 bg-yellow-400 rounded-full opacity-70 animate-bounce"
+        ></div>
+        <!-- Decorative Wi-Fi-themed Elements -->
+        <div
+          class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-indigo-500 opacity-50"
+        >
+          <div
+            class="absolute inset-0 w-8 h-8 border-2 border-blue-600 rounded-full animate-pulse"
+          ></div>
+          <div
+            class="absolute inset-0 w-12 h-12 border-2 border-indigo-400 rounded-full"
+          ></div>
+          <div
+            class="absolute inset-0 w-16 h-16 border-2 border-blue-300 rounded-full"
+          ></div>
+        </div>
+        <div
+          class="absolute top-10 right-1/3 w-28 h-28 bg-blue-200 rounded-full opacity-40"
+        >
+          <span
+            class="absolute inset-x-0 bottom-0 text-sm text-blue-500 animate-bounce"
+          ></span>
+        </div>
+
+        <!-- Decorative Signal Waves -->
+        <div
+          class="absolute bottom-20 left-20 w-32 h-8 bg-gradient-to-r from-blue-400 to-blue-700 rounded-full opacity-60 animate-pulse"
+        ></div>
+        <div
+          class="absolute top-16 right-16 w-24 h-2 bg-gradient-to-r from-green-400 to-green-600 rounded-full opacity-70 animate-ping"
+        ></div>
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row items-center">
+            <!-- Hero Content -->
+            <div class="md:w-1/2 text-white hero-content mb-10 md:mb-0">
+              <h1
+                class="text-4xl md:text-5xl font-bold leading-tight mb-6 animate-fadeIn"
+                style="animation-delay: 0.1s"
+              >
+                Secure Your Connection with
+                <span class="text-yellow-300">DiSCon-X</span>
+              </h1>
+              <p
+                class="text-xl mb-8 text-blue-100 animate-fadeIn"
+                style="animation-delay: 0.2s"
+              >
+                Protect yourself from evil twin attacks with DICT-CALABARZON's
+                official mobile security solution that verifies legitimate Wi-Fi
+                networks in real-time.
+              </p>
+              <div
+                class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fadeIn"
+                style="animation-delay: 0.3s"
+              >
+                <a
+                  href="#download"
+                  class="btn-primary text-center px-8 py-3 rounded-lg font-semibold text-yellow-300 flex items-center justify-center border border-yellow-300"
+                >
+                  <i class="fas fa-shield-alt mr-2"></i>
+                  Get Protected Now
+                </a>
+                <a
+                  href="#learn-more"
+                  class="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold flex items-center justify-center hover:bg-blue-50 transition-all"
+                >
+                  <i class="fas fa-info-circle mr-2"></i>
+                  Learn More
+                </a>
+              </div>
+              <div
+                class="mt-8 flex items-center space-x-4 animate-fadeIn"
+                style="animation-delay: 0.4s"
+              >
+                <div class="flex -space-x-2">
+                  <img
+                    src="Aeldred.png"
+                    alt="User avatar"
+                    class="w-10 h-10 rounded-full border-2 border-white"
+                  />
+                  <img
+                    src="Aeldred.png"
+                    alt="User avatar"
+                    class="w-10 h-10 rounded-full border-2 border-white"
+                  />
+                  <img
+                    src="Aeldred.png"
+                    alt="User avatar"
+                    class="w-10 h-10 rounded-full border-2 border-white"
+                  />
+                </div>
+                <p class="text-blue-100">
+                  <span class="font-semibold text-white">10,000+</span>
+                  protected users
+                </p>
+              </div>
+            </div>
+            <!-- Mobile PWA Preview Section for Hero Area with Stylish Background and Fan-Stack Effect (Wider Version) -->
+            <div class="md:w-1/2 animate-fadeIn" style="animation-delay: 0.5s">
+              <div class="relative">
+                <!-- Stylish Background with Geometric Elements - Wider and more prominent -->
+                <div class="absolute inset-0 rounded-xl overflow-hidden">
+                  <!-- Gradient background with patterns -->
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800"
+                  ></div>
+
+                  <!-- Decorative geometric elements - Expanded for wider container -->
+                  <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full transform translate-x-20 -translate-y-20"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full transform -translate-x-10 translate-y-10"
+                  ></div>
+                  <div
+                    class="absolute top-1/3 left-1/4 w-40 h-40 bg-white opacity-5 rounded-full"
+                  ></div>
+
+                  <!-- Security-themed pattern elements - More spread out -->
+                  <div
+                    class="absolute top-16 left-16 text-white opacity-10 text-6xl"
+                  >
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div
+                    class="absolute bottom-16 right-24 text-white opacity-10 text-5xl"
+                  >
+                    <i class="fas fa-wifi"></i>
+                  </div>
+                  <div
+                    class="absolute top-1/3 right-16 text-white opacity-10 text-4xl"
+                  >
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <div
+                    class="absolute bottom-1/3 left-32 text-white opacity-10 text-5xl"
+                  >
+                    <i class="fas fa-user-shield"></i>
+                  </div>
+                  <div
+                    class="absolute top-2/3 left-1/2 text-white opacity-10 text-4xl"
+                  >
+                    <i class="fas fa-globe-asia"></i>
+                  </div>
+
+                  <!-- Subtle network connection lines -->
+                  <svg
+                    class="absolute inset-0 w-full h-full"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <pattern
+                        id="network-pattern"
+                        x="0"
+                        y="0"
+                        width="60"
+                        height="60"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <path
+                          d="M0 30H60M30 0V60"
+                          stroke="rgba(255,255,255,0.05)"
+                          stroke-width="0.5"
+                        ></path>
+                      </pattern>
+                    </defs>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="url(#network-pattern)"
+                    ></rect>
+                  </svg>
+                </div>
+
+                <!-- Fan-Stacked Phones Container - Wider layout with more spread -->
+                <div class="relative py-20 px-8 flex justify-center">
+                  <!-- Phone 3 (Background) -->
+                  <div
+                    class="absolute mx-auto rounded-lg overflow-hidden transform -rotate-15 translate-x-20 translate-y-6 scale-85 opacity-40 shadow-2xl rounded-[40px] border-8 border-gray-900 bg-gray-900"
+                    style="width: 240px; height: 480px"
+                  >
+                    <div class="h-full rounded-[32px] overflow-hidden">
+                      <!-- App Header -->
+                      <div
+                        class="bg-blue-600 text-white p-4 flex items-center justify-between"
+                      >
+                        <div class="flex items-center">
+                          <i class="fas fa-shield-alt text-lg mr-2"></i>
+                          <span class="font-bold">DiSCon-X</span>
+                        </div>
+                      </div>
+
+                      <!-- Learn Page Preview -->
+                      <div class="h-full bg-gray-100 p-3">
+                        <h3 class="font-bold text-sm mb-2">
+                          Cybersecurity Education
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                          <div class="bg-white rounded p-2 text-center">
+                            <div
+                              class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-1"
+                            >
+                              <i class="fas fa-lock text-blue-600 text-xs"></i>
+                            </div>
+                            <p class="text-xs font-medium">Use VPN</p>
+                          </div>
+                          <div class="bg-white rounded p-2 text-center">
+                            <div
+                              class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-1"
+                            >
+                              <i
+                                class="fas fa-shield-alt text-green-600 text-xs"
+                              ></i>
+                            </div>
+                            <p class="text-xs font-medium">Verify Networks</p>
+                          </div>
+                        </div>
+
+                        <div
+                          class="bg-white rounded-lg shadow-sm overflow-hidden mb-3"
+                        >
+                          <div class="bg-gray-100 h-12 relative"></div>
+                          <div class="p-2">
+                            <h4 class="font-bold text-xs">Evil Twin Attacks</h4>
+                            <p class="text-xs text-gray-600">
+                              How to stay safe...
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phone 4 (Extra Background) - Added for wider spread -->
+                  <div
+                    class="absolute mx-auto rounded-lg overflow-hidden transform rotate-20 -translate-x-28 translate-y-12 scale-80 opacity-30 shadow-2xl rounded-[40px] border-8 border-gray-900 bg-gray-900"
+                    style="width: 240px; height: 480px"
+                  >
+                    <div class="h-full rounded-[32px] overflow-hidden">
+                      <!-- App Header -->
+                      <div
+                        class="bg-blue-600 text-white p-4 flex items-center justify-between"
+                      >
+                        <div class="flex items-center">
+                          <i class="fas fa-shield-alt text-lg mr-2"></i>
+                          <span class="font-bold">DiSCon-X</span>
+                        </div>
+                      </div>
+
+                      <!-- Profile Page Preview -->
+                      <div class="h-full bg-gray-100">
+                        <div
+                          class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 text-white"
+                        >
+                          <div class="flex items-center mb-2">
+                            <div
+                              class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3"
+                            >
+                              <i class="fas fa-user text-blue-600"></i>
+                            </div>
+                            <div>
+                              <h4 class="font-bold text-xs">Juan Dela Cruz</h4>
+                              <p class="text-[10px] text-blue-200">
+                                user@example.com
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="p-2">
+                          <div class="bg-white rounded-lg p-2 mb-2">
+                            <h5 class="font-bold text-xs">Account Settings</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phone 2 (Middle Layer) -->
+                  <div
+                    class="absolute mx-auto rounded-lg overflow-hidden transform rotate-8 -translate-x-20 scale-90 opacity-75 shadow-2xl rounded-[40px] border-8 border-gray-900 bg-gray-900"
+                    style="width: 240px; height: 480px"
+                  >
+                    <div class="h-full rounded-[32px] overflow-hidden">
+                      <!-- App Header -->
+                      <div
+                        class="bg-blue-600 text-white p-4 flex items-center justify-between"
+                      >
+                        <div class="flex items-center">
+                          <i class="fas fa-shield-alt text-lg mr-2"></i>
+                          <span class="font-bold">DiSCon-X</span>
+                        </div>
+                      </div>
+
+                      <!-- Scan Page Preview -->
+                      <div
+                        class="h-full bg-gray-100 p-3 flex flex-col items-center"
+                      >
+                        <div
+                          class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-4 relative"
+                        >
+                          <div
+                            class="w-12 h-12 bg-blue-200 rounded-full absolute animate-ping opacity-50"
+                          ></div>
+                          <div
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white"
+                          >
+                            <i class="fas fa-wifi"></i>
+                          </div>
+                        </div>
+
+                        <h3 class="font-bold text-sm mb-1">
+                          Scanning for Networks
+                        </h3>
+                        <p class="text-xs text-gray-600 mb-4 text-center">
+                          Checking against DICT's verified database
+                        </p>
+
+                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-4">
+                          <div
+                            class="bg-blue-600 h-1.5 rounded-full w-3/4"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Main Phone (Foreground) - Slightly larger for emphasis -->
+                  <div
+                    class="relative mx-auto rounded-lg overflow-hidden rounded-[40px] overflow-hidden border-8 border-gray-900 shadow-2xl bg-gray-900 z-10"
+                    style="width: 320px; height: 600px"
+                  >
+                    <!-- Status Bar -->
+                    <div
+                      class="h-6 bg-black flex items-center justify-between px-4"
+                    >
+                      <div class="text-white text-xs">9:41</div>
+                      <div class="flex space-x-1">
+                        <i class="fas fa-signal text-white text-xs"></i>
+                        <i class="fas fa-wifi text-white text-xs"></i>
+                        <i class="fas fa-battery-full text-white text-xs"></i>
+                      </div>
+                    </div>
+
+                    <!-- App Content -->
+                    <div class="bg-gray-100 h-full">
+                      <!-- App Header -->
+                      <div
+                        class="bg-blue-600 text-white p-4 flex items-center justify-between"
+                      >
+                        <div class="flex items-center">
+                          <i class="fas fa-shield-alt text-lg mr-2"></i>
+                          <span class="font-bold">DiSCon-X</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                          <i class="far fa-bell"></i>
+                          <i class="far fa-user-circle"></i>
+                        </div>
+                      </div>
+
+                      <!-- Map area -->
+                      <div class="h-40 bg-gray-300 relative">
+                        <!-- Simplified map view -->
+                        <div
+                          class="absolute inset-0 bg-cover bg-center"
+                          style="background-image: url('Map.png')"
+                        >
+                          <!-- Map markers -->
+                          <div
+                            class="w-3 h-3 bg-green-500 rounded-full absolute"
+                            style="top: 20%; left: 30%"
+                          ></div>
+                          <div
+                            class="w-3 h-3 bg-green-500 rounded-full absolute"
+                            style="top: 50%; left: 40%"
+                          ></div>
+                          <div
+                            class="w-3 h-3 bg-yellow-500 rounded-full absolute"
+                            style="top: 40%; left: 60%"
+                          ></div>
+                          <div
+                            class="w-3 h-3 bg-red-500 rounded-full absolute"
+                            style="top: 30%; left: 80%"
+                          ></div>
+
+                          <!-- User location -->
+                          <div
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                          >
+                            <div
+                              class="w-4 h-4 bg-blue-600 rounded-full border-2 border-white"
+                            ></div>
+                          </div>
+                        </div>
+
+                        <!-- Map controls -->
+                        <div
+                          class="absolute top-2 right-2 flex flex-col space-y-1"
+                        >
+                          <button
+                            class="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md"
+                          >
+                            <i class="fas fa-plus text-xs text-gray-700"></i>
+                          </button>
+                          <button
+                            class="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md"
+                          >
+                            <i class="fas fa-minus text-xs text-gray-700"></i>
+                          </button>
+                        </div>
+                      </div>
+
+                      <!-- Network info -->
+                      <div class="bg-white p-3 shadow-md">
+                        <div class="flex items-center justify-between mb-3">
+                          <div>
+                            <h3 class="font-bold text-sm">
+                              Current Connection
+                            </h3>
+                            <div class="flex items-center">
+                              <i
+                                class="fas fa-wifi text-blue-600 mr-1 text-xs"
+                              ></i>
+                              <span class="text-xs">CalambaFreeWiFi</span>
+                              <span
+                                class="ml-1 text-xs px-1 bg-green-100 text-green-800 rounded-sm"
+                                >Verified</span
+                              >
+                            </div>
+                          </div>
+                          <div class="flex">
+                            <div
+                              class="w-1 h-3 bg-blue-600 rounded-sm mr-0.5"
+                            ></div>
+                            <div
+                              class="w-1 h-3 bg-blue-600 rounded-sm mr-0.5"
+                            ></div>
+                            <div
+                              class="w-1 h-3 bg-blue-600 rounded-sm mr-0.5"
+                            ></div>
+                            <div class="w-1 h-3 bg-gray-300 rounded-sm"></div>
+                          </div>
+                        </div>
+
+                        <!-- Search bar -->
+                        <div class="relative">
+                          <input
+                            type="text"
+                            placeholder="Search for Wi-Fi networks..."
+                            class="w-full py-1.5 pl-7 pr-2 text-xs border border-gray-300 rounded-md"
+                          />
+                          <i
+                            class="fas fa-search absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs"
+                          ></i>
+                        </div>
+                      </div>
+
+                      <!-- Network list -->
+                      <div
+                        class="p-3 space-y-3 overflow-y-auto"
+                        style="max-height: 322px"
+                      >
+                        <!-- Network card 1 -->
+                        <div class="bg-white rounded-lg shadow-sm p-3">
+                          <div class="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 class="font-bold text-sm">CalambaFreeWiFi</h4>
+                              <p class="text-xs text-gray-500">
+                                DICT Public Access Point
+                              </p>
+                            </div>
+                            <span
+                              class="text-xs px-1.5 py-0.5 bg-green-100 text-green-800 rounded-full flex items-center"
+                            >
+                              <i class="fas fa-check-circle mr-0.5 text-xs"></i
+                              >Verified
+                            </span>
+                          </div>
+                          <div class="flex justify-between items-center">
+                            <div
+                              class="flex items-center text-xs text-gray-600"
+                            >
+                              <i class="fas fa-lock mr-1 text-xs"></i>
+                              <span>WPA2</span>
+                            </div>
+                            <button
+                              class="bg-blue-600 text-white text-xs py-1 px-3 rounded-md"
+                            >
+                              Connect
+                            </button>
+                          </div>
+                        </div>
+
+                        <!-- Network card 2 - Warning -->
+                        <div class="bg-white rounded-lg shadow-sm p-3">
+                          <div class="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 class="font-bold text-sm">ShopMall_FREE</h4>
+                              <p class="text-xs text-gray-500">SM Calamba</p>
+                            </div>
+                            <span
+                              class="text-xs px-1.5 py-0.5 bg-yellow-100 text-yellow-800 rounded-full flex items-center"
+                            >
+                              <i
+                                class="fas fa-question-circle mr-0.5 text-xs"
+                              ></i
+                              >Unknown
+                            </span>
+                          </div>
+                          <div
+                            class="bg-yellow-50 border-l-2 border-yellow-400 px-2 py-1 text-xs text-yellow-800 mb-2"
+                          >
+                            <i
+                              class="fas fa-exclamation-triangle mr-1 text-xs"
+                            ></i>
+                            Not on DICT's verified list. Use with caution.
+                          </div>
+                          <div class="flex justify-between items-center">
+                            <div
+                              class="flex items-center text-xs text-gray-600"
+                            >
+                              <i class="fas fa-unlock mr-1 text-xs"></i>
+                              <span>Open</span>
+                            </div>
+                            <button
+                              class="bg-yellow-500 text-white text-xs py-1 px-3 rounded-md"
+                            >
+                              Review
+                            </button>
+                          </div>
+                        </div>
+
+                        <!-- Network card 3 - Danger -->
+                        <div class="bg-white rounded-lg shadow-sm p-3">
+                          <div class="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 class="font-bold text-sm">
+                                FREE_WiFi_CalambaCity
+                              </h4>
+                              <p class="text-xs text-gray-500">
+                                Unknown location
+                              </p>
+                            </div>
+                            <span
+                              class="text-xs px-1.5 py-0.5 bg-red-100 text-red-800 rounded-full flex items-center"
+                            >
+                              <i
+                                class="fas fa-exclamation-circle mr-0.5 text-xs"
+                              ></i
+                              >Suspicious
+                            </span>
+                          </div>
+                          <div
+                            class="bg-red-50 border-l-2 border-red-500 px-2 py-1 text-xs text-red-800 mb-2"
+                          >
+                            <i class="fas fa-shield-alt mr-1 text-xs"></i>
+                            Potential evil twin attack detected!
+                          </div>
+                          <div class="flex justify-between items-center">
+                            <div
+                              class="flex items-center text-xs text-gray-600"
+                            >
+                              <i class="fas fa-unlock mr-1 text-xs"></i>
+                              <span>Open</span>
+                            </div>
+                            <button
+                              class="bg-red-600 text-white text-xs py-1 px-3 rounded-md"
+                            >
+                              Block
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Bottom Navigation -->
+                      <div
+                        class="absolute bottom-0 left-0 right-0 h-14 bg-white border-t border-gray-200 flex justify-around items-center"
+                      >
+                        <a
+                          href="#"
+                          class="flex flex-col items-center justify-center text-blue-600"
+                        >
+                          <i class="fas fa-home text-xs"></i>
+                          <span class="text-[10px] mt-1">Home</span>
+                        </a>
+                        <a
+                          href="#"
+                          class="flex flex-col items-center justify-center text-gray-500"
+                        >
+                          <i class="fas fa-search text-xs"></i>
+                          <span class="text-[10px] mt-1">Scan</span>
+                        </a>
+                        <a
+                          href="#"
+                          class="flex flex-col items-center justify-center text-gray-500"
+                        >
+                          <i class="fas fa-bell text-xs"></i>
+                          <span class="text-[10px] mt-1">Alerts</span>
+                        </a>
+                        <a
+                          href="#"
+                          class="flex flex-col items-center justify-center text-gray-500"
+                        >
+                          <i class="fas fa-book text-xs"></i>
+                          <span class="text-[10px] mt-1">Learn</span>
+                        </a>
+                        <a
+                          href="#"
+                          class="flex flex-col items-center justify-center text-gray-500"
+                        >
+                          <i class="fas fa-user text-xs"></i>
+                          <span class="text-[10px] mt-1">Profile</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Phone Hardware -->
+                    <div
+                      class="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-5 bg-black rounded-b-3xl"
+                    ></div>
+                    <div
+                      class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-1/3 h-1 bg-gray-300 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- DICT Official Badge -->
+                <div
+                  class="absolute -right-4 -bottom-4 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg z-20"
+                >
+                  <div class="flex items-center">
+                    <div class="text-sm font-bold mr-2">DICT Official App</div>
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                </div>
+
+                <!-- Decorative floating elements -->
+                <div
+                  class="absolute top-10 left-10 w-8 h-8 bg-blue-500 rounded-full opacity-30 animate-pulse-slow"
+                ></div>
+                <div
+                  class="absolute bottom-20 right-10 w-6 h-6 bg-yellow-500 rounded-full opacity-30 animate-pulse-medium"
+                ></div>
+                <div
+                  class="absolute top-1/4 right-10 w-7 h-7 bg-green-500 rounded-full opacity-30 animate-pulse-fast"
+                ></div>
+                <div
+                  class="absolute bottom-32 left-24 w-5 h-5 bg-purple-500 rounded-full opacity-30 animate-pulse-medium"
+                ></div>
+                <div
+                  class="absolute top-32 right-32 w-4 h-4 bg-red-500 rounded-full opacity-30 animate-pulse-slow"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search Section -->
+      <section class="py-8 bg-white shadow-md relative z-10">
+        <div class="container mx-auto px-4">
+          <div
+            class="max-w-4xl mx-auto bg-white rounded-lg p-6 -mt-16 shadow-xl"
+          >
+            <h2 class="text-2xl font-bold text-center mb-6">
+              Find Secure Wi-Fi Networks Near You
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="flex-1">
+                <label for="location" class="form-label text-gray-700"
+                  >Location</label
+                >
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter your location"
+                    class="w-full p-3 border border-gray-300 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    aria-label="Enter your location"
+                  />
+                  <i
+                    class="fas fa-map-marker-alt absolute left-3 top-3 text-gray-400"
+                  ></i>
+                </div>
+              </div>
+              <div class="flex-1">
+                <label for="radius" class="form-label text-gray-700"
+                  >Search Radius</label
+                >
+                <select
+                  id="radius"
+                  class="w-full p-3 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  aria-label="Select search radius"
+                >
+                  <option value="1">1 km</option>
+                  <option value="2" selected>2 km</option>
+                  <option value="5">5 km</option>
+                  <option value="10">10 km</option>
+                </select>
+              </div>
+              <div class="flex items-end">
+                <button
+                  class="btn-primary p-3 rounded-lg text-white w-full md:w-auto whitespace-nowrap"
+                >
+                  <i class="fas fa-search mr-2"></i>
+                  Search Networks
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="py-20 bg-gray-50 relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-blue-50 via-gray-100 to-purple-50 opacity-80 -z-10"
+        ></div>
+        <div
+          class="absolute -top-16 right-16 w-48 h-48 bg-blue-300 rounded-full opacity-40 blur-2xl -z-10"
+        ></div>
+        <div
+          class="absolute bottom-16 left-10 w-56 h-56 bg-purple-400 rounded-full opacity-30 blur-xl -z-10"
+        ></div>
+        <div
+          class="absolute top-1/3 right-1/3 w-32 h-32 bg-yellow-300 rounded-full opacity-50 rotate-45 -z-10"
+        ></div>
+        <div
+          class="absolute -bottom-16 right-20 w-64 h-16 bg-gradient-to-l from-blue-300 to-purple-400 opacity-40 rounded-full animate-pulse -z-10"
+        ></div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-4 relative">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Key Features</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              DiSCon-X offers comprehensive protection against evil twin attacks
+              with these powerful features
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 feature-card">
+              <div class="flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6"
+                >
+                  <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Real-Time Threat Detection</h3>
+              <p class="text-gray-600 mb-4">
+                Scan and analyze nearby Wi-Fi networks to identify potential
+                evil twin attacks and unsafe connections.
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Instant alerts for suspicious networks</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Automatic MAC address verification</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Signal strength analysis</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 feature-card">
+              <div class="flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+                >
+                  <i class="fas fa-map-marked-alt text-2xl text-green-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Verified Network Map</h3>
+              <p class="text-gray-600 mb-4">
+                Access an interactive map of all DICT-verified secure public
+                Wi-Fi hotspots across CALABARZON.
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>GPS-enabled location services</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Real-time verified hotspot updates</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Network quality indicators</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 feature-card">
+              <div class="flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6"
+                >
+                  <i class="fas fa-graduation-cap text-2xl text-purple-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Cybersecurity Education</h3>
+              <p class="text-gray-600 mb-4">
+                Learn how to protect yourself with built-in resources about
+                Wi-Fi security and best practices.
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Interactive security tutorials</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Regular security tips notifications</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Community knowledge base</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">How DiSCon-X Works</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Our comprehensive security solution integrates mobile protection
+              with DICT's whitelist verification system
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+              <!-- System Architecture Image with Zoom Functionality -->
+              <div
+                class="relative bg-gray-100 rounded-xl shadow-lg overflow-hidden"
+              >
+                <div
+                  id="architecture-container"
+                  class="w-full h-96 overflow-hidden"
+                  style="cursor: move"
+                >
+                  <img
+                    id="architecture-img"
+                    src="System Architecture.png"
+                    alt="DiSCon-X System Architecture"
+                    class="w-full h-full object-contain transition-transform duration-300 ease-in-out"
+                    style="transform-origin: center center"
+                  />
+                </div>
+
+                <!-- Zoom Controls -->
+                <div
+                  class="absolute bottom-4 right-4 bg-white rounded-lg shadow-md flex overflow-hidden"
+                >
+                  <button
+                    id="zoom-in"
+                    class="p-2 hover:bg-gray-100 border-r border-gray-200 focus:outline-none"
+                    aria-label="Zoom in"
+                  >
+                    <i class="fas fa-search-plus text-gray-700"></i>
+                  </button>
+                  <button
+                    id="zoom-out"
+                    class="p-2 hover:bg-gray-100 border-r border-gray-200 focus:outline-none"
+                    aria-label="Zoom out"
+                  >
+                    <i class="fas fa-search-minus text-gray-700"></i>
+                  </button>
+                  <button
+                    id="zoom-reset"
+                    class="p-2 hover:bg-gray-100 focus:outline-none"
+                    aria-label="Reset zoom"
+                  >
+                    <i class="fas fa-undo text-gray-700"></i>
+                  </button>
+                </div>
+              </div>
+              <p class="text-center text-sm text-gray-500 mt-3">
+                Click on the diagram to zoom in, drag to pan, and use the
+                controls to adjust the view
+              </p>
+            </div>
+            <div class="space-y-8">
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6"
+                >
+                  <span class="font-bold">1</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">Network Scanning</h3>
+                  <p class="text-gray-600">
+                    DiSCon-X constantly monitors surrounding Wi-Fi networks,
+                    collecting data about signal strength, security protocols,
+                    and network identifiers.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6"
+                >
+                  <span class="font-bold">2</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">Whitelist Verification</h3>
+                  <p class="text-gray-600">
+                    Each detected network is checked against DICT's regularly
+                    updated whitelist of verified public Wi-Fi access points.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6"
+                >
+                  <span class="font-bold">3</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">Threat Analysis</h3>
+                  <p class="text-gray-600">
+                    Advanced algorithms detect inconsistencies and suspicious
+                    behaviors that might indicate an evil twin attack or other
+                    network security threats.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6"
+                >
+                  <span class="font-bold">4</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">
+                    User Alerts & Protection
+                  </h3>
+                  <p class="text-gray-600">
+                    Users receive instant notifications about potential threats
+                    with recommendations on secure networks to use instead.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admin Dashboard Preview -->
+      <section class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Web-Based Monitoring System</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">
+              For DICT administrators: Efficiently manage whitelisted networks
+              and monitor security threats in real-time
+            </p>
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute inset-0 bg-blue-600 rounded-xl transform rotate-1 scale-105 opacity-20 z-10"
+            ></div>
+            <div
+              class="absolute inset-0 bg-purple-600 rounded-xl transform -rotate-1 scale-105 opacity-20 z-0"
+            ></div>
+            <div
+              class="relative z-20 bg-gray-800 rounded-xl overflow-hidden shadow-2xl border border-gray-700"
+            >
+              <div
+                class="bg-gray-900 py-4 px-6 flex items-center border-b border-gray-700"
+              >
+                <div class="flex space-x-2">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div class="mx-auto text-sm font-medium text-gray-400">
+                  DiSCon-X Admin Dashboard
+                </div>
+              </div>
+
+              <!-- Embedded Dashboard Preview - Fully contained -->
+              <div
+                class="dashboard-preview w-full bg-gray-100 overflow-hidden"
+                style="height: 500px"
+              >
+                <!-- Mock Sidebar - Left -->
+                <div class="flex h-full">
+                  <!-- Sidebar Icons (Fixed color contrast) -->
+                  <div
+                    class="w-12 bg-gray-800 h-full flex flex-col items-center py-3 flex-shrink-0"
+                  >
+                    <div class="text-blue-400 mb-5">
+                      <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="text-blue-300 mb-8">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="text-gray-400 mb-3">
+                      <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="text-gray-400 mb-3">
+                      <i class="fas fa-list-check"></i>
+                    </div>
+                    <div class="text-gray-400 mb-3">
+                      <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                    <div class="text-gray-400 mb-3">
+                      <i class="fas fa-map-location-dot"></i>
+                    </div>
+                  </div>
+
+                  <!-- Main Content Area -->
+                  <div class="flex-1 overflow-hidden">
+                    <!-- Dashboard Header -->
+                    <div
+                      class="bg-white p-3 shadow-sm mb-3 flex justify-between items-center"
+                    >
+                      <h2 class="text-gray-800 font-bold text-sm">
+                        Dashboard Overview
+                      </h2>
+                      <div class="flex items-center space-x-3">
+                        <div class="relative">
+                          <i class="fas fa-search text-gray-400 text-xs"></i>
+                        </div>
+                        <div class="relative">
+                          <i class="fas fa-bell text-gray-400 text-xs"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Dashboard Content -->
+                    <div class="px-3">
+                      <!-- Top Row Stats -->
+                      <div class="grid grid-cols-4 gap-3 mb-3">
+                        <!-- Total Networks -->
+                        <div class="bg-white rounded shadow-sm p-3">
+                          <div class="flex items-center justify-between mb-1">
+                            <span class="text-gray-500 text-xs"
+                              >Total Networks</span
+                            >
+                            <span
+                              class="p-1 bg-blue-100 text-blue-600 rounded-full"
+                            >
+                              <i class="fas fa-wifi text-xs"></i>
+                            </span>
+                          </div>
+                          <p class="text-lg font-bold text-gray-800">1,254</p>
+                        </div>
+
+                        <!-- Verified Networks -->
+                        <div class="bg-white rounded shadow-sm p-3">
+                          <div class="flex items-center justify-between mb-1">
+                            <span class="text-gray-500 text-xs">Verified</span>
+                            <span
+                              class="p-1 bg-green-100 text-green-600 rounded-full"
+                            >
+                              <i class="fas fa-check-circle text-xs"></i>
+                            </span>
+                          </div>
+                          <p class="text-lg font-bold text-gray-800">987</p>
+                        </div>
+
+                        <!-- Suspicious Networks -->
+                        <div class="bg-white rounded shadow-sm p-3">
+                          <div class="flex items-center justify-between mb-1">
+                            <span class="text-gray-500 text-xs"
+                              >Suspicious</span
+                            >
+                            <span
+                              class="p-1 bg-red-100 text-red-600 rounded-full"
+                            >
+                              <i
+                                class="fas fa-exclamation-triangle text-xs"
+                              ></i>
+                            </span>
+                          </div>
+                          <p class="text-lg font-bold text-gray-800">37</p>
+                        </div>
+
+                        <!-- Active Users -->
+                        <div class="bg-white rounded shadow-sm p-3">
+                          <div class="flex items-center justify-between mb-1">
+                            <span class="text-gray-500 text-xs"
+                              >Active Users</span
+                            >
+                            <span
+                              class="p-1 bg-purple-100 text-purple-600 rounded-full"
+                            >
+                              <i class="fas fa-users text-xs"></i>
+                            </span>
+                          </div>
+                          <p class="text-lg font-bold text-gray-800">13.5k</p>
+                        </div>
+                      </div>
+
+                      <!-- Map and Charts Row -->
+                      <div class="grid grid-cols-3 gap-3 mb-3">
+                        <!-- Map -->
+                        <div class="bg-white rounded shadow-sm p-3 col-span-2">
+                          <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-bold text-gray-800"
+                              >Network Coverage</span
+                            >
+                            <div class="flex items-center text-xs">
+                              <span class="flex items-center mr-2">
+                                <span
+                                  class="w-2 h-2 bg-green-500 rounded-full mr-1"
+                                ></span>
+                                <span class="text-gray-700">Verified</span>
+                              </span>
+                              <span class="flex items-center">
+                                <span
+                                  class="w-2 h-2 bg-red-500 rounded-full mr-1"
+                                ></span>
+                                <span class="text-gray-700">Alert</span>
+                              </span>
+                            </div>
+                          </div>
+                          <!-- Simplified Map View -->
+                          <div
+                            style="
+                              height: 140px;
+                              background-image: url('Map2.png');
+                              background-size: cover;
+                              background-position: center;
+                              border-radius: 0.25rem;
+                              position: relative;
+                            "
+                          >
+                            <!-- Map Pins -->
+                            <div
+                              style="position: absolute; top: 30%; left: 20%"
+                              class="w-2 h-2 bg-green-500 rounded-full"
+                            ></div>
+                            <div
+                              style="position: absolute; top: 50%; left: 40%"
+                              class="w-2 h-2 bg-green-500 rounded-full"
+                            ></div>
+                            <div
+                              style="position: absolute; top: 70%; left: 30%"
+                              class="w-2 h-2 bg-green-500 rounded-full"
+                            ></div>
+                            <div
+                              style="position: absolute; top: 40%; left: 60%"
+                              class="w-2 h-2 bg-yellow-500 rounded-full"
+                            ></div>
+                            <div
+                              style="position: absolute; top: 60%; left: 70%"
+                              class="w-2 h-2 bg-green-500 rounded-full"
+                            ></div>
+                            <div
+                              style="position: absolute; top: 30%; left: 80%"
+                              class="w-2 h-2 bg-red-500 rounded-full"
+                            ></div>
+                          </div>
+                        </div>
+
+                        <!-- Recent Alerts -->
+                        <div class="bg-white rounded shadow-sm p-3">
+                          <span
+                            class="text-sm font-bold text-gray-800 block mb-2"
+                            >Recent Alerts</span
+                          >
+                          <div class="space-y-2 text-xs">
+                            <div class="flex items-start">
+                              <div
+                                class="p-1 bg-red-100 text-red-600 rounded-full mr-2 flex-shrink-0"
+                              >
+                                <i
+                                  class="fas fa-exclamation-triangle text-xs"
+                                ></i>
+                              </div>
+                              <div>
+                                <p class="font-medium text-gray-800">
+                                  Evil Twin Attack
+                                </p>
+                                <p class="text-gray-600">SM Megamall</p>
+                              </div>
+                            </div>
+
+                            <div class="flex items-start">
+                              <div
+                                class="p-1 bg-yellow-100 text-yellow-600 rounded-full mr-2 flex-shrink-0"
+                              >
+                                <i class="fas fa-wifi text-xs"></i>
+                              </div>
+                              <div>
+                                <p class="font-medium text-gray-800">
+                                  New Network
+                                </p>
+                                <p class="text-gray-600">Calamba Hall</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Whitelist Management (Simplified) -->
+                      <div class="bg-white rounded shadow-sm p-3">
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="text-sm font-bold text-gray-800"
+                            >Whitelist Management</span
+                          >
+                          <button
+                            class="px-2 py-1 bg-blue-600 text-white rounded text-xs"
+                          >
+                            Add
+                          </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                          <table class="min-w-full text-xs">
+                            <thead>
+                              <tr
+                                class="bg-gray-50 text-left text-gray-500 uppercase"
+                              >
+                                <th class="px-3 py-1">Network</th>
+                                <th class="px-3 py-1">Location</th>
+                                <th class="px-3 py-1">Status</th>
+                                <th class="px-3 py-1">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                              <tr>
+                                <td class="px-3 py-1 text-gray-700">
+                                  BatangasFreeWiFi
+                                </td>
+                                <td class="px-3 py-1 text-gray-700">
+                                  Batangas Plaza
+                                </td>
+                                <td class="px-3 py-1">
+                                  <div class="flex items-center">
+                                    <span
+                                      class="w-2 h-2 bg-green-500 rounded-full mr-1"
+                                    ></span>
+                                    <span class="text-gray-700">Verified</span>
+                                  </div>
+                                </td>
+                                <td class="px-3 py-1">
+                                  <a
+                                    href="#"
+                                    class="text-blue-600 hover:text-blue-900 mr-2"
+                                    >Edit</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="px-3 py-1 text-gray-700">
+                                  MallFreeWiFi
+                                </td>
+                                <td class="px-3 py-1 text-gray-700">
+                                  SM Megamall
+                                </td>
+                                <td class="px-3 py-1">
+                                  <div class="flex items-center">
+                                    <span
+                                      class="w-2 h-2 bg-red-500 rounded-full mr-1"
+                                    ></span>
+                                    <span class="text-gray-700"
+                                      >Suspicious</span
+                                    >
+                                  </div>
+                                </td>
+                                <td class="px-3 py-1">
+                                  <a
+                                    href="#"
+                                    class="text-red-600 hover:text-red-900"
+                                    >Block</a
+                                  >
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div class="flex items-center justify-center">
+                <div class="text-blue-400 mb-4">
+                  <i class="fas fa-list-alt text-3xl"></i>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold mb-2">Whitelist Management</h3>
+              <p class="text-gray-400">
+                Add, edit, or remove approved Wi-Fi networks to keep the
+                verification system accurate and up-to-date.
+              </p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div class="flex items-center justify-center">
+                <div class="text-green-400 mb-4">
+                  <i class="fas fa-chart-line text-3xl"></i>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold mb-2">Threat Analytics</h3>
+              <p class="text-gray-400">
+                View real-time statistics on detected threats, attack patterns,
+                and affected regions to improve security planning.
+              </p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div class="flex items-center justify-center">
+                <div class="text-purple-400 mb-4">
+                  <i class="fas fa-bell text-3xl"></i>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold mb-2">Alert Management</h3>
+              <p class="text-gray-400">
+                Send custom notifications to users in specific locations about
+                emerging threats or security recommendations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">What Users Say</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              DiSCon-X is helping users across CALABARZON stay protected from
+              Wi-Fi security threats
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="flex items-center mb-6">
+                <img
+                  src="Aeldred.png"
+                  alt="User"
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h4 class="font-bold">Maria Santos</h4>
+                  <p class="text-gray-600 text-sm">
+                    University Student, Laguna
+                  </p>
+                </div>
+              </div>
+              <div class="mb-4 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="text-gray-600">
+                "DiSCon-X alerted me to an unsafe network at a coffee shop I
+                frequent. It turned out to be a fake hotspot! This app has
+                become essential for me when studying in public places."
+              </p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="flex items-center mb-6">
+                <img
+                  src="Aeldred.png"
+                  alt="User"
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h4 class="font-bold">Juan Reyes</h4>
+                  <p class="text-gray-600 text-sm">Business Owner, Batangas</p>
+                </div>
+              </div>
+              <div class="mb-4 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="text-gray-600">
+                "I travel frequently for business and connect to many different
+                networks. DiSCon-X gives me peace of mind knowing that my
+                sensitive business data is protected from malicious networks."
+              </p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="flex items-center mb-6">
+                <img
+                  src="Aeldred.png"
+                  alt="User"
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h4 class="font-bold">Ana Mendoza</h4>
+                  <p class="text-gray-600 text-sm">Teacher, Quezon</p>
+                </div>
+              </div>
+              <div class="mb-4 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="text-gray-600">
+                "The educational resources in DiSCon-X have helped me teach my
+                students about cybersecurity. The map feature is also great for
+                finding reliable Wi-Fi connections around our school."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="py-20 bg-white relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-purple-50 via-gray-100 to-blue-50 opacity-80 -z-10"
+        ></div>
+        <div
+          class="absolute -top-16 right-16 w-48 h-48 bg-purple-300 rounded-full opacity-30 blur-2xl -z-10"
+        ></div>
+        <div
+          class="absolute bottom-16 left-10 w-56 h-56 bg-blue-400 rounded-full opacity-30 blur-xl -z-10"
+        ></div>
+        <div
+          class="absolute top-1/4 right-1/4 w-32 h-32 bg-yellow-300 rounded-full opacity-50 rotate-45 -z-10"
+        ></div>
+        <div
+          class="absolute -bottom-16 right-20 w-64 h-16 bg-gradient-to-l from-purple-300 to-blue-400 opacity-40 rounded-full animate-pulse -z-10"
+        ></div>
+
+        <!-- FAQ Content -->
+        <div class="container mx-auto px-4 relative">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Find answers to common questions about DiSCon-X and Wi-Fi security
+            </p>
+          </div>
+
+          <div class="max-w-3xl mx-auto">
+            <!-- FAQ Item 1 -->
+            <div class="mb-6">
+              <button
+                class="flex justify-between items-center w-full text-left font-bold text-lg p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                aria-expanded="false"
+                aria-controls="faq-1"
+              >
+                What is an evil twin attack?
+                <i class="fas fa-chevron-down text-blue-600"></i>
+              </button>
+              <div id="faq-1" class="p-4 text-gray-600 hidden">
+                <p>
+                  An evil twin attack occurs when a malicious actor creates a
+                  fake Wi-Fi network that mimics a legitimate one. When users
+                  connect to this fake network, attackers can intercept data,
+                  steal credentials, or inject malware into their devices.
+                  DiSCon-X helps identify these malicious networks by comparing
+                  them against DICT's verified whitelist.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="mb-6">
+              <button
+                class="flex justify-between items-center w-full text-left font-bold text-lg p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                aria-expanded="false"
+                aria-controls="faq-2"
+              >
+                How does DiSCon-X protect my device?
+                <i class="fas fa-chevron-down text-blue-600"></i>
+              </button>
+              <div id="faq-2" class="p-4 text-gray-600 hidden">
+                <p>
+                  DiSCon-X continuously scans nearby Wi-Fi networks and verifies
+                  them against DICT's official whitelist of legitimate access
+                  points. It analyzes network characteristics like MAC
+                  addresses, signal strength patterns, and encryption types to
+                  detect suspicious networks. When a potential threat is
+                  identified, you'll receive an immediate alert with recommended
+                  actions.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="mb-6">
+              <button
+                class="flex justify-between items-center w-full text-left font-bold text-lg p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                aria-expanded="false"
+                aria-controls="faq-3"
+              >
+                Is DiSCon-X available nationwide?
+                <i class="fas fa-chevron-down text-blue-600"></i>
+              </button>
+              <div id="faq-3" class="p-4 text-gray-600 hidden">
+                <p>
+                  Currently, DiSCon-X is specifically optimized for the
+                  CALABARZON region where DICT has established a comprehensive
+                  whitelist of verified networks. However, plans for nationwide
+                  expansion are underway as part of DICT's broader cybersecurity
+                  initiative. The app can still be used outside CALABARZON, but
+                  the verified network database will be most complete within the
+                  region.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="mb-6">
+              <button
+                class="flex justify-between items-center w-full text-left font-bold text-lg p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                aria-expanded="false"
+                aria-controls="faq-4"
+              >
+                Does DiSCon-X collect my personal data?
+                <i class="fas fa-chevron-down text-blue-600"></i>
+              </button>
+              <div id="faq-4" class="p-4 text-gray-600 hidden">
+                <p>
+                  DiSCon-X is designed with privacy in mind. The app only
+                  collects anonymous data necessary for security functions, such
+                  as Wi-Fi network information and approximate location (when
+                  enabled) to show nearby verified networks. All data is
+                  encrypted and follows the Data Privacy Act of 2012. You can
+                  review our complete privacy policy in the app.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="mb-6">
+              <button
+                class="flex justify-between items-center w-full text-left font-bold text-lg p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                aria-expanded="false"
+                aria-controls="faq-5"
+              >
+                How often is the whitelist updated?
+                <i class="fas fa-chevron-down text-blue-600"></i>
+              </button>
+              <div id="faq-5" class="p-4 text-gray-600 hidden">
+                <p>
+                  DICT-CALABARZON maintains and updates the whitelist of
+                  verified networks daily. When your device has an internet
+                  connection, DiSCon-X automatically syncs with this database to
+                  ensure you have the most current security information. You can
+                  also manually trigger a whitelist update from the app
+                  settings.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+              <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+              <p class="text-gray-600 mb-8">
+                Have questions or feedback about DiSCon-X? We'd love to hear
+                from you. Fill out the form or contact us directly using the
+                information below.
+              </p>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0"
+                  >
+                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold mb-1">
+                      DICT-CALABARZON Regional Office
+                    </h3>
+                    <p class="text-gray-600">
+                      No. IV Telecom Rd Brgy, Brgy Telecom Rd <br />
+                      Batangas, 4200 Batangas
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0"
+                  >
+                    <i class="fas fa-phone-alt text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold mb-1">Phone Support</h3>
+                    <p class="text-gray-600">
+                      Main: (049) 123-4567<br />
+                      Technical Support: (049) 765-4321
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0"
+                  >
+                    <i class="fas fa-envelope text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold mb-1">Email</h3>
+                    <p class="text-gray-600">
+                      General Inquiries: info@discon-x.gov.ph<br />
+                      Support: support@discon-x.gov.ph
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 flex space-x-4">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Twitter"
+                  class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition-colors"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  class="w-10 h-10 rounded-full bg-blue-800 text-white flex items-center justify-center hover:bg-blue-900 transition-colors"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-6">Send us a Message</h3>
+                <form>
+                  <div class="mb-4">
+                    <label for="name" class="form-label text-gray-700"
+                      >Full Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="email" class="form-label text-gray-700"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter your email address"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="subject" class="form-label text-gray-700"
+                      >Subject</label
+                    >
+                    <select
+                      id="subject"
+                      class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Select a subject
+                      </option>
+                      <option value="general">General Inquiry</option>
+                      <option value="technical">Technical Support</option>
+                      <option value="feedback">Feedback</option>
+                      <option value="partnership">
+                        Partnership Opportunity
+                      </option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-6">
+                    <label for="message" class="form-label text-gray-700"
+                      >Message</label
+                    >
+                    <textarea
+                      id="message"
+                      class="w-full p-3 border border-gray-300 rounded-lg h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Type your message here..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="w-full btn-primary py-3 px-6 rounded-lg text-white font-medium"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white pt-20 pb-8">
+        <div class="container mx-auto px-4">
+          <!-- Main Footer Content -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+            <!-- About DiSCon-X - Spans 4 columns -->
+            <div class="md:col-span-4">
+              <div class="flex items-center mb-6">
+                <i class="fas fa-shield-alt text-blue-400 text-2xl mr-2"></i>
+                <span class="font-bold text-xl"
+                  >DiSCon-<span class="text-blue-400">X</span></span
+                >
+              </div>
+              <p class="text-gray-400 mb-6">
+                An official DICT-CALABARZON initiative protecting citizens from
+                Wi-Fi security threats with advanced detection technology and
+                cybersecurity education.
+              </p>
+              <div class="mb-6">
+                <h5 class="font-semibold mb-3 text-white">Download Now</h5>
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-900 transition-colors"
+                  >
+                    <i class="fab fa-apple text-xl mr-2"></i>
+                    <div class="text-left">
+                      <div class="text-xs">Download on the</div>
+                      <div class="text-sm font-semibold">App Store</div>
+                    </div>
+                  </a>
+                  <a
+                    href="#"
+                    class="flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-900 transition-colors"
+                  >
+                    <i class="fab fa-google-play text-xl mr-2"></i>
+                    <div class="text-left">
+                      <div class="text-xs">Get it on</div>
+                      <div class="text-sm font-semibold">Google Play</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="flex space-x-4 mb-6">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-colors"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Twitter"
+                  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition-colors"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition-colors"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-800 hover:text-white transition-colors"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  aria-label="YouTube"
+                  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-colors"
+                >
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links - Spans 2 columns -->
+            <div class="md:col-span-2">
+              <h4 class="font-bold text-lg mb-6 flex items-center">
+                <i class="fas fa-link text-blue-400 mr-2"></i>Quick Links
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a
+                    href="#features"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Features</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#how-it-works"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >How It Works</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#download"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Download</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#faq"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >FAQ</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Contact</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Careers</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >News</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Resources - Spans 2 columns -->
+            <div class="md:col-span-2">
+              <h4 class="font-bold text-lg mb-6 flex items-center">
+                <i class="fas fa-book text-blue-400 mr-2"></i>Resources
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Wi-Fi Security</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Evil Twin Attack</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Public Wi-Fi Safety</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >User Manuals</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Knowledge Base</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Developer API</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >System Status</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Support - Spans 2 columns -->
+            <div class="md:col-span-2">
+              <h4 class="font-bold text-lg mb-6 flex items-center">
+                <i class="fas fa-headset text-blue-400 mr-2"></i>Support
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Help Center</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Ticket Support</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Community Forum</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Feedback</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Report Issue</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Security Report</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center"
+                    ><i
+                      class="fas fa-chevron-right text-xs mr-2 text-blue-400"
+                    ></i
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact Information - Spans 2 columns -->
+            <div class="md:col-span-2">
+              <h4 class="font-bold text-lg mb-6 flex items-center">
+                <i class="fas fa-info-circle text-blue-400 mr-2"></i>Contact
+                Info
+              </h4>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-3"></i>
+                  <span class="text-gray-400"
+                    >DICT-CALABARZON Regional Office<br />DICT Compound, Telecom
+                    Road, Capitol Site, Kumintang Ibaba, Batangas City<br />Batangas,
+                    Philippines 4200</span
+                  >
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-phone-alt text-blue-400 mr-3"></i>
+                  <span class="text-gray-400">(049) 123-4567</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                  <span class="text-gray-400">support@discon-x.gov.ph</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-clock text-blue-400 mr-3"></i>
+                  <span class="text-gray-400">Mon-Fri: 8:00 AM - 5:00 PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Newsletter Section -->
+          <div class="bg-gray-800 rounded-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+              <div class="md:col-span-1">
+                <h4 class="text-xl font-bold mb-2">Stay Updated</h4>
+                <p class="text-gray-400">
+                  Subscribe to our newsletter for the latest security news and
+                  updates.
+                </p>
+              </div>
+              <div class="md:col-span-2">
+                <form class="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    class="flex-1 px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-blue-500"
+                    aria-label="Enter your email for updates"
+                  />
+                  <button
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+                <p class="text-gray-500 text-sm mt-2">
+                  By subscribing, you agree to our Privacy Policy and consent to
+                  receive updates from DiSCon-X.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Government & Organization Logos -->
+          <div class="flex flex-wrap justify-center gap-8 mb-12">
+            <div class="flex flex-col items-center">
+              <img
+                src="dictlogo.png"
+                alt="DICT Logo"
+                class="h-16 w-auto mb-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+              />
+              <span class="text-xs text-gray-500">Department of ICT</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src="republicofthephilippines.png"
+                alt="Republic of the Philippines"
+                class="h-16 w-auto mb-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+              />
+              <span class="text-xs text-gray-500"
+                >Republic of the Philippines</span
+              >
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src="calabarzon.png"
+                alt="CALABARZON Logo"
+                class="h-16 w-auto mb-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+              />
+              <span class="text-xs text-gray-500">CALABARZON Region</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src="dictcs.png"
+                alt="Cybersecurity Bureau"
+                class="h-16 w-auto mb-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+              />
+              <span class="text-xs text-gray-500">Cybersecurity Bureau</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src="NPC.png"
+                alt="National Privacy Commission"
+                class="h-16 w-auto mb-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+              />
+              <span class="text-xs text-gray-500"
+                >National Privacy Commission</span
+              >
+            </div>
+          </div>
+
+          <!-- Legal Links Section -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+              <h5 class="font-semibold mb-4 text-white">Legal Information</h5>
+              <div class="flex flex-wrap gap-x-4 gap-y-2">
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Terms of Service</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Privacy Policy</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Security Policy</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Accessibility Statement</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Data Privacy Notice</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Cookie Settings</a
+                >
+              </div>
+            </div>
+            <div>
+              <h5 class="font-semibold mb-4 text-white">
+                Government Resources
+              </h5>
+              <div class="flex flex-wrap gap-x-4 gap-y-2">
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >DICT Official Website</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >E-Government Portal</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >National Government Portal</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Transparency Seal</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >Freedom of Information</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div
+            class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+          >
+            <div class="text-center md:text-left mb-4 md:mb-0">
+              <p class="text-sm text-gray-500 mb-1">
+                © 2025 Department of Information and Communications Technology -
+                CALABARZON Region. All rights reserved.
+              </p>
+              <p class="text-xs text-gray-600">
+                Official Website of the DICT-CALABARZON DiSCon-X Project.
+                Unauthorized access is prohibited.
+              </p>
+            </div>
+
+            <div class="flex items-center">
+              <span class="text-xs text-gray-500 mr-3">Verified by:</span>
+              <a
+                href="#"
+                class="flex items-center bg-gray-800 rounded-lg px-3 py-2 hover:bg-gray-700 transition-colors"
+              >
+                <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                <span class="text-xs text-gray-400"
+                  >DICT Cybersecurity Bureau</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- Emergency Contact -->
+          <div
+            class="mt-8 bg-gray-800 rounded-lg p-4 flex items-center justify-between"
+          >
+            <div class="flex items-center">
+              <i
+                class="fas fa-exclamation-triangle text-yellow-500 text-xl mr-3"
+              ></i>
+              <div>
+                <h5 class="font-semibold text-sm text-white">
+                  Report Security Incidents
+                </h5>
+                <p class="text-xs text-gray-400">
+                  For urgent cybersecurity incidents, contact the DICT Computer
+                  Emergency Response Team
+                </p>
+              </div>
+            </div>
+            <a
+              href="tel:+6328489831"
+              class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition-colors"
+            >
+              <i class="fas fa-phone-alt mr-2"></i>
+              Emergency Hotline
+            </a>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Authentication Modal (Hidden by default) -->
+      <div
+        id="auth-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden"
+      >
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold" id="modal-title">Log In</h3>
+            <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+
+          <div id="login-form">
+            <div class="mb-4">
+              <label for="login-email" class="form-label text-gray-700"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="login-email"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="mb-6">
+              <label for="login-password" class="form-label text-gray-700"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="login-password"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your password"
+                required
+              />
+              <div class="flex justify-between mt-2">
+                <div class="flex items-center">
+                  <input type="checkbox" id="remember-me" class="mr-2" />
+                  <label for="remember-me" class="text-sm text-gray-600"
+                    >Remember me</label
+                  >
+                </div>
+                <a href="#" class="text-sm text-blue-600 hover:underline"
+                  >Forgot password?</a
+                >
+              </div>
+            </div>
+
+            <button
+              class="w-full btn-primary py-3 rounded-lg text-white font-medium mb-4"
+            >
+              Log In
+            </button>
+
+            <div class="relative flex items-center justify-center mb-4">
+              <div class="border-t border-gray-300 absolute w-full"></div>
+              <span class="bg-white px-2 text-sm text-gray-500 relative"
+                >OR</span
+              >
+            </div>
+
+            <div class="space-y-3">
+              <button
+                class="w-full py-3 px-4 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+              >
+                <i class="fa-brands fa-google mr-3"></i>
+                <span>Continue with Google</span>
+              </button>
+              <button
+                class="w-full py-3 px-4 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors"
+              >
+                <i class="fab fa-facebook-f mr-3"></i>
+                <span>Continue with Facebook</span>
+              </button>
+            </div>
+
+            <div class="text-center mt-6">
+              <p class="text-gray-600">
+                Don't have an account?
+                <a
+                  href="#"
+                  id="switch-to-signup"
+                  class="text-blue-600 font-medium hover:underline"
+                  >Sign Up</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div id="signup-form" class="hidden">
+            <div class="mb-4">
+              <label for="signup-name" class="form-label text-gray-700"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="signup-name"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="signup-email" class="form-label text-gray-700"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="signup-email"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="signup-password" class="form-label text-gray-700"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="signup-password"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Create a password"
+                required
+              />
+              <p class="text-xs text-gray-500 mt-1">
+                Password must be at least 8 characters and include a number and
+                special character
+              </p>
+            </div>
+
+            <div class="mb-6">
+              <label
+                for="signup-confirm-password"
+                class="form-label text-gray-700"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                id="signup-confirm-password"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+
+            <div class="mb-6">
+              <div class="flex items-start">
+                <input type="checkbox" id="terms" class="mt-1 mr-2" required />
+                <label for="terms" class="text-sm text-gray-600">
+                  I agree to the
+                  <a href="#" class="text-blue-600 hover:underline"
+                    >Terms of Service</a
+                  >
+                  and
+                  <a href="#" class="text-blue-600 hover:underline"
+                    >Privacy Policy</a
+                  >
+                </label>
+              </div>
+            </div>
+
+            <button
+              class="w-full btn-primary py-3 rounded-lg text-white font-medium mb-4"
+            >
+              Create Account
+            </button>
+
+            <div class="relative flex items-center justify-center mb-4">
+              <div class="border-t border-gray-300 absolute w-full"></div>
+              <span class="bg-white px-2 text-sm text-gray-500 relative"
+                >OR</span
+              >
+            </div>
+
+            <div class="space-y-3">
+              <button
+                class="w-full py-3 px-4 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+              >
+                <i class="fa-brands fa-google mr-3"></i>
+                <span>Sign up with Google</span>
+              </button>
+              <button
+                class="w-full py-3 px-4 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors"
+              >
+                <i class="fab fa-facebook-f mr-3"></i>
+                <span>Sign up with Facebook</span>
+              </button>
+            </div>
+
+            <div class="text-center mt-6">
+              <p class="text-gray-600">
+                Already have an account?
+                <a
+                  href="#"
+                  id="switch-to-login"
+                  class="text-blue-600 font-medium hover:underline"
+                  >Log In</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Get the dark mode toggle and HTML element
+      const darkModeToggle = document.getElementById("dark-mode-toggle");
+      const htmlElement = document.documentElement;
+
+      // Check for saved preference in localStorage
+      if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+      }
+
+      // Set up the toggle functionality
+      if (darkModeToggle) {
+        darkModeToggle.addEventListener("click", () => {
+          if (htmlElement.classList.contains("dark")) {
+            disableDarkMode();
+          } else {
+            enableDarkMode();
+          }
+        });
+      }
+
+      // Function to enable dark mode
+      function enableDarkMode() {
+        // Add 'dark' class to html element (for Tailwind)
+        htmlElement.classList.add("dark");
+
+        // Update toggle icon
+        const icon = darkModeToggle.querySelector("i");
+        if (icon) {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          darkModeToggle.setAttribute("aria-label", "Toggle light mode");
+        }
+
+        // Save preference to localStorage
+        localStorage.setItem("darkMode", "enabled");
+      }
+
+      // Function to disable dark mode
+      function disableDarkMode() {
+        // Remove 'dark' class from html element
+        htmlElement.classList.remove("dark");
+
+        // Update toggle icon
+        const icon = darkModeToggle.querySelector("i");
+        if (icon) {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          darkModeToggle.setAttribute("aria-label", "Toggle dark mode");
+        }
+
+        // Save preference to localStorage
+        localStorage.setItem("darkMode", "disabled");
+      }
+    </script>
+    <script src="discon-x-landing-scripts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!-- Decorative Background -->
+<div class="absolute -top-16 right-16 w-48 h-48 bg-purple-300 rounded-full opacity-30 blur-2xl -z-10"></div>
+<div class="absolute bottom-16 left-10 w-56 h-56 bg-blue-400 rounded-full opacity-30 blur-xl -z-10"></div>
+<div class="absolute top-1/4 right-1/4 w-32 h-32 bg-yellow-300 rounded-full opacity-50 rotate-45 -z-10"></div>
+<div class="absolute -bottom-16 right-20 w-64 h-16 bg-gradient-to-l from-purple-300 to-blue-400 opacity-40 rounded-full animate-pulse -z-10"></div>
+
+<!-- FAQ Content -->
+<div class="container mx-auto px-4 relative">
+    <div class="text-center mb-16">
+        <h2 id="faq-title" class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">
+      Find answers to common questions about DiSCon-X and Wi-Fi security
+    </p>
+  </div>
+
+  <div class="max-w-3xl mx-auto">
+    <!-- FAQ Item 1 -->
+    <div class="mb-6">
+      <button class="faq-button" aria-expanded="false" aria-controls="faq-1">
+        What is an evil twin attack?
+        <i class="fas fa-chevron-down text-blue-600"></i>
+      </button>
+      <div id="faq-1" class="faq-content hidden">
+        <p>
+          An evil twin attack occurs when a malicious actor creates a fake Wi-Fi network that mimics a legitimate one. When users connect to this fake network, attackers can intercept data, steal credentials, or inject malware into their devices. DiSCon-X helps identify these malicious networks by comparing them against DICT's verified whitelist.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 2 -->
+    <div class="mb-6">
+      <button class="faq-button" aria-expanded="false" aria-controls="faq-2">
+        How does DiSCon-X protect my device?
+        <i class="fas fa-chevron-down text-blue-600"></i>
+      </button>
+      <div id="faq-2" class="faq-content hidden">
+        <p>
+          DiSCon-X continuously scans nearby Wi-Fi networks and verifies them against DICT's official whitelist of legitimate access points. It analyzes network characteristics like MAC addresses, signal strength patterns, and encryption types to detect suspicious networks. When a potential threat is identified, you'll receive an immediate alert with recommended actions.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 3 -->
+    <div class="mb-6">
+      <button class="faq-button" aria-expanded="false" aria-controls="faq-3">
+        Is DiSCon-X available nationwide?
+        <i class="fas fa-chevron-down text-blue-600"></i>
+      </button>
+      <div id="faq-3" class="faq-content hidden">
+        <p>
+          Currently, DiSCon-X is specifically optimized for the CALABARZON region where DICT has established a comprehensive whitelist of verified networks. However, plans for nationwide expansion are underway as part of DICT's broader cybersecurity initiative. The app can still be used outside CALABARZON, but the verified network database will be most complete within the region.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 4 -->
+    <div class="mb-6">
+      <button class="faq-button" aria-expanded="false" aria-controls="faq-4">
+        Does DiSCon-X collect my personal data?
+        <i class="fas fa-chevron-down text-blue-600"></i>
+      </button>
+      <div id="faq-4" class="faq-content hidden">
+        <p>
+          DiSCon-X is designed with privacy in mind. The app only collects anonymous data necessary for security functions, such as Wi-Fi network information and approximate location (when enabled) to show nearby verified networks. All data is encrypted and follows the Data Privacy Act of 2012. You can review our complete privacy policy in the app.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 5 -->
+    <div class="mb-6">
+      <button class="faq-button" aria-expanded="false" aria-controls="faq-5">
+        How often is the whitelist updated?
+        <i class="fas fa-chevron-down text-blue-600"></i>
+      </button>
+      <div id="faq-5" class="faq-content hidden">
+        <p>
+          DICT-CALABARZON maintains and updates the whitelist of verified networks daily. When your device has an internet connection, DiSCon-X automatically syncs with this database to ensure you have the most current security information. You can also manually trigger a whitelist update from the app settings.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

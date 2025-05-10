@@ -1,0 +1,249 @@
+/**
+ * DiSCon-X - Dark Mode CSS
+ * This file contains styles for dark mode
+ */
+
+/* Dark mode variables */
+.dark {
+    color-scheme: dark;
+    
+    /* Override main variables for dark mode */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #475569;
+  }
+  
+  /* Base dark mode overrides */
+  .dark body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  /* Header */
+  .dark header {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  .dark header .text-gray-700 {
+    color: var(--text-secondary) !important;
+  }
+  
+  /* Mobile menu */
+  .dark #mobile-menu {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  .dark #mobile-menu a {
+    color: var(--text-primary) !important;
+  }
+  
+  .dark #mobile-menu a:hover {
+    background-color: var(--bg-tertiary) !important;
+  }
+  
+  /* Feature cards */
+  .dark .feature-card {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  /* Section backgrounds */
+  .dark section.bg-white:not(.admin-dashboard-section),
+  .dark section.bg-gray-50:not(.admin-dashboard-section),
+  .dark section.bg-gray-100:not(.admin-dashboard-section) {
+    background-color: var(--bg-primary) !important;
+  }
+  
+  /* Text colors */
+  .dark .text-gray-500 {
+    color: #a0aec0 !important; /* Brighter color with better contrast */
+  }
+  .dark .text-gray-600,
+  .dark .text-gray-700,
+  .dark .text-gray-800 {
+    color: #cbd5e1 !important; /* Even brighter for better contrast */
+  }
+  
+  /* Borders */
+  .dark .border,
+  .dark .border-gray-200,
+  .dark .border-gray-300 {
+    border-color: var(--border-color) !important;
+  }
+  
+  /* Form fields */
+  .dark input,
+  .dark select,
+  .dark textarea {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+  
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: var(--text-muted) !important;
+  }
+  
+  /* Auth modal */
+  .dark #auth-modal > div {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  /* Gradient background */
+  .dark .gradient-bg {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark)) !important;
+  }
+  
+  /* FAQ items */
+  .dark .faq-button {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .dark .faq-content {
+    color: var(--text-secondary) !important;
+  }
+  
+  /* Testimonial cards */
+  .dark .testimonial-card {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  /* Contact form container */
+  .dark .contact-form-container {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  /* Architecture viewer */
+  .dark .architecture-container {
+    background-color: var(--bg-tertiary) !important;
+  }
+  
+  .dark .zoom-controls {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  .dark .zoom-btn {
+    color: var(--text-primary) !important;
+  }
+  
+  .dark .zoom-btn:hover {
+    background-color: var(--bg-tertiary) !important;
+  }
+  
+  .dark .zoom-btn:not(:last-child) {
+    border-color: var(--border-color) !important;
+  }
+  
+  /* Admin dashboard */
+  .dark .dashboard-browser-bar {
+    background-color: #030712 !important;
+    border-color: #111827 !important;
+  }
+  
+  .dark .dashboard-sidebar {
+    background-color: #111827 !important;
+  }
+  
+  /* Buttons */
+  .dark .btn-primary {
+    background-color: var(--primary);
+  }
+  
+  .dark .btn-primary:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* Shadows */
+  .dark .shadow-sm,
+  .dark .shadow-md,
+  .dark .shadow-lg,
+  .dark .shadow-xl {
+    --tw-shadow-color: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Search section exception - always keep light theme */
+  .dark .search-section-container,
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg {
+    background-color: white !important;
+    color: var(--text-primary-light) !important;
+  }
+
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg h2,
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg label,
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg .text-gray-700 {
+    color: #334155 !important; /* Keep dark text color */
+  }
+
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg input,
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg select {
+    background-color: white !important;
+    color: #1e293b !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg input::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg .icon i {
+    color: #94a3b8 !important;
+  }
+
+  /* Make sure the button styling remains consistent */
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg .btn-primary {
+    background-color: var(--primary) !important;
+    color: white !important;
+  }
+
+  .dark .max-w-4xl.mx-auto.bg-white.rounded-lg .btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+  }
+
+  /* Exemptions for App Mockup and Admin Dashboard in dark mode */
+
+  /* Admin Dashboard - preserve light appearance */
+  .dark .dashboard-preview .bg-white,
+  .dark .dashboard-preview .bg-gray-50,
+  .dark .dashboard-preview .rounded.shadow-sm {
+    background-color: white !important;
+  }
+
+  .dark .dashboard-preview .text-gray-500,
+  .dark .dashboard-preview .text-gray-600,
+  .dark .dashboard-preview .text-gray-700,
+  .dark .dashboard-preview .text-gray-800 {
+    color: #374151 !important;
+  }
+
+  .dark .dashboard-preview .bg-gray-50 {
+    background-color: #f9fafb !important;
+  }
+
+  /* Preserve table styles */
+  .dark .dashboard-preview table, 
+  .dark .dashboard-preview th,
+  .dark .dashboard-preview td,
+  .dark .dashboard-preview .divide-gray-200 > tr {
+    background-color: white !important;
+    color: #374151 !important;
+    border-color: #e5e7eb !important;
+  }
+
+  .dark .dashboard-preview thead {
+    background-color: #f9fafb !important;
+  }
+
+  .dark .dashboard-preview .divide-y.divide-gray-200 {
+    border-color: #e5e7eb !important;
+  }
+
+  /* Preserve the map area in dashboard */
+  .dark .dashboard-preview [style*="background-color: #e5e7eb"] {
+    background-color: #e5e7eb !important;
+  }

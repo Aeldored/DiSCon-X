@@ -1,0 +1,91 @@
+<!-- How It Works Component -->
+<div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+        <h2 id="how-it-works-title" class="text-3xl font-bold mb-4">How DiSCon-X Works</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Our comprehensive security solution integrates mobile protection with DICT's whitelist verification system
+      </p>
+    </div>
+  
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div>
+        <!-- System Architecture Image with Zoom Functionality -->
+        <div class="relative bg-gray-100 rounded-xl shadow-lg overflow-hidden">
+          <div id="architecture-container" class="w-full h-96 overflow-hidden" style="cursor: move">
+            <img
+              id="architecture-img"
+              src="images/system-architecture.png"
+              alt="DiSCon-X System Architecture"
+              class="w-full h-full object-contain transition-transform duration-300 ease-in-out"
+              style="transform-origin: center center"
+            />
+          </div>
+  
+          <!-- Zoom Controls -->
+          <div class="absolute bottom-4 right-4 bg-white rounded-lg shadow-md flex overflow-hidden">
+            <button id="zoom-in" class="p-2 hover:bg-gray-100 border-r border-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none" aria-label="Zoom in">
+              <i class="fas fa-search-plus text-gray-700 mr-1"></i>
+              <span class="sr-only">Zoom in</span>
+            </button>
+            <button id="zoom-out" class="p-2 hover:bg-gray-100 border-r border-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none" aria-label="Zoom out">
+              <i class="fas fa-search-minus text-gray-700 mr-1"></i>
+              <span class="sr-only">Zoom out</span>
+            </button>
+            <button id="zoom-reset" class="p-2 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none" aria-label="Reset zoom">
+              <i class="fas fa-undo text-gray-700 mr-1"></i>
+              <span class="sr-only">Reset zoom</span>
+            </button>
+          </div>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-3">
+          Click on the diagram to zoom in, drag to pan, and use the controls to adjust the view
+        </p>
+      </div>
+      <div class="space-y-8">
+        <div class="flex items-start">
+          <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6">
+            <span class="font-bold">1</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Network Scanning</h3>
+            <p class="text-gray-600">
+              DiSCon-X constantly monitors surrounding Wi-Fi networks, collecting data about signal strength, security protocols, and network identifiers.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6">
+            <span class="font-bold">2</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Whitelist Verification</h3>
+            <p class="text-gray-600">
+              Each detected network is checked against DICT's regularly updated whitelist of verified public Wi-Fi access points.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6">
+            <span class="font-bold">3</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Threat Analysis</h3>
+            <p class="text-gray-600">
+              Advanced algorithms detect inconsistencies and suspicious behaviors that might indicate an evil twin attack or other network security threats.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mr-6">
+            <span class="font-bold">4</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">User Alerts & Protection</h3>
+            <p class="text-gray-600">
+              Users receive instant notifications about potential threats with recommendations on secure networks to use instead.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

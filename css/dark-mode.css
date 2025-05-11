@@ -32,17 +32,51 @@
     color: var(--text-secondary) !important;
   }
   
-  /* Mobile menu */
+  /* Mobile menu - Dark Mode */
   .dark #mobile-menu {
-    background-color: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary);
+    border-top-color: var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   }
-  
-  .dark #mobile-menu a {
-    color: var(--text-primary) !important;
+
+  .dark .mobile-menu-item {
+    color: var(--text-secondary);
   }
-  
-  .dark #mobile-menu a:hover {
-    background-color: var(--bg-tertiary) !important;
+
+  .dark .mobile-menu-item:hover,
+  .dark .mobile-menu-item:focus {
+    background-color: var(--bg-tertiary);
+    color: var(--primary);
+  }
+
+  .dark #mobile-menu button {
+    color: var(--text-primary);
+  }
+
+  .dark #mobile-menu button:hover {
+    background-color: var(--bg-tertiary);
+  }
+
+  /* Fix login button in mobile menu for dark mode */
+  .dark #mobile-menu #login-btn {
+    color: var(--primary);
+    background-color: transparent;
+    border: 1px solid var(--primary);
+  }
+
+  .dark #mobile-menu #login-btn:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+
+  /* Fix dark mode toggle button */
+  .dark #mobile-menu #mobile-dark-mode-toggle {
+    color: var(--text-secondary);
+  }
+
+  .dark #mobile-menu #mobile-dark-mode-toggle:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
   }
   
   /* Feature cards */
@@ -88,10 +122,109 @@
     color: var(--text-muted) !important;
   }
   
-  /* Auth modal */
-  .dark #auth-modal > div {
-    background-color: var(--bg-secondary) !important;
-    color: var(--text-primary) !important;
+  /* Auth Modal - Dark Mode */
+  .dark .auth-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .dark .auth-modal-container {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  .dark .auth-modal-close {
+    color: var(--text-secondary);
+  }
+
+  .dark .auth-modal-close:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  .dark .auth-modal-title {
+    color: var(--text-primary);
+  }
+
+  .dark .auth-form label {
+    color: var(--text-secondary);
+  }
+
+  .dark .auth-form input[type="text"],
+  .dark .auth-form input[type="email"],
+  .dark .auth-form input[type="password"] {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  .dark .auth-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+
+  .dark .auth-form small {
+    color: var(--text-muted);
+  }
+
+  .dark .btn-social {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  .dark .btn-social:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--primary);
+  }
+
+  .dark .btn-facebook {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    color: white;
+  }
+
+  .dark .btn-facebook:hover {
+    background-color: #166fe5;
+  }
+
+  .dark .divider {
+    color: var(--text-muted);
+  }
+
+  .dark .divider::before {
+    background-color: var(--border-color);
+  }
+
+  .dark .divider span {
+    background-color: var(--bg-secondary);
+  }
+
+  .dark .switch-form {
+    color: var(--text-secondary);
+  }
+
+  .dark .switch-form button {
+    color: var(--primary);
+  }
+
+  .dark .forgot-password {
+    color: var(--primary);
+  }
+
+  /* Make sure these CSS variables are properly applied */
+  .dark .btn-primary {
+    background-color: var(--primary);
+    color: white;
+  }
+
+  .dark .btn-primary:hover {
+    background-color: var(--primary-dark);
+  }
+
+  /* Fix checkboxes in dark mode */
+  .dark input[type="checkbox"] {
+    accent-color: var(--primary);
   }
   
   /* Gradient background */

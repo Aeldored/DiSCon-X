@@ -93,8 +93,7 @@ const ComponentLoader = (function() {
       { containerId: 'testimonials-section', componentUrl: 'components/testimonials.html' },
       { containerId: 'faq-section', componentUrl: 'components/faq.html' },
       { containerId: 'contact-section', componentUrl: 'components/contact.html' },
-      { containerId: 'footer-content', componentUrl: 'components/footer.html' },
-      { containerId: 'auth-modal-container', componentUrl: 'components/auth-modal.html' }
+      { containerId: 'footer-content', componentUrl: 'components/footer.html' }
     ];
 
     function preloadComponentDimensions() {

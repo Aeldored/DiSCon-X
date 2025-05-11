@@ -1,0 +1,122 @@
+<!-- Security Dashboard Component -->
+<div class="container mx-auto px-4">
+  <div class="text-center mb-16">
+    <h2 class="text-3xl font-bold mb-4">Your Security Dashboard</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">
+      Track your security score and monitor your protection status in real-time
+    </p>
+  </div>
+
+  <!-- Security Score Widget -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-8 text-white text-center">
+      <h3 class="text-xl font-bold mb-4">Security Score</h3>
+      <div class="relative w-48 h-48 mx-auto">
+        <svg class="w-48 h-48 transform -rotate-90">
+          <circle cx="96" cy="96" r="88" stroke="currentColor" stroke-width="8" fill="none" opacity="0.2"></circle>
+          <circle cx="96" cy="96" r="88" stroke="currentColor" stroke-width="8" fill="none" 
+                  stroke-dasharray="553" stroke-dashoffset="138" stroke-linecap="round"
+                  class="text-white"></circle>
+        </svg>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <span class="text-5xl font-bold">85</span>
+            <span class="text-2xl">/100</span>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4">Excellent Protection Level</p>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <h3 class="text-xl font-bold mb-6">Recent Activity</h3>
+      <div class="space-y-4">
+        <div class="flex items-center">
+          <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+            <i class="fas fa-shield-alt text-green-600"></i>
+          </div>
+          <div>
+            <p class="font-medium">Connected to Verified Network</p>
+            <p class="text-sm text-gray-500">Batangas City Hall WiFi - 10 mins ago</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+            <i class="fas fa-exclamation-triangle text-red-600"></i>
+          </div>
+          <div>
+            <p class="font-medium">Blocked Suspicious Network</p>
+            <p class="text-sm text-gray-500">Free_Mall_WiFi - 1 hour ago</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+            <i class="fas fa-trophy text-blue-600"></i>
+          </div>
+          <div>
+            <p class="font-medium">Achievement Unlocked</p>
+            <p class="text-sm text-gray-500">Security Sentinel - 2 hours ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <h3 class="text-xl font-bold mb-6">Protection Stats</h3>
+      <div class="space-y-6">
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-600">Networks Scanned</span>
+            <span class="font-bold">247</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-blue-500 h-2 rounded-full" style="width: 75%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-600">Threats Avoided</span>
+            <span class="font-bold">12</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-red-500 h-2 rounded-full" style="width: 30%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-600">Safe Connections</span>
+            <span class="font-bold">235</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weekly Security Report -->
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white">
+      <h3 class="text-xl font-bold">Weekly Security Report</h3>
+    </div>
+    <div class="p-8">
+      <canvas id="security-chart" height="300"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Add Chart.js for visualization -->
+<script>
+  // Mock chart data - in real implementation, this would be dynamic
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('security-chart');
+    if (ctx) {
+      // This is just a placeholder - actual chart would be implemented
+      ctx.style.background = '#f3f4f6';
+      ctx.style.borderRadius = '8px';
+    }
+  });
+</script>

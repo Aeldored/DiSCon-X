@@ -91,6 +91,10 @@ const ComponentLoader = (function() {
       { containerId: 'how-it-works-section', componentUrl: 'components/how-it-works.html' },
       { containerId: 'admin-dashboard-section', componentUrl: 'components/admin-dashboard.html' },
       { containerId: 'testimonials-section', componentUrl: 'components/testimonials.html' },
+      { containerId: 'community-features-section', componentUrl: 'components/community-features.html' },
+      { containerId: 'security-dashboard-section', componentUrl: 'components/security-dashboard.html' },
+      { containerId: 'ai-visualization-section', componentUrl: 'components/ai-visualization.html' },
+      { containerId: 'achievement-system-section', componentUrl: 'components/achievement-system.html' },
       { containerId: 'faq-section', componentUrl: 'components/faq.html' },
       { containerId: 'contact-section', componentUrl: 'components/contact.html' },
       { containerId: 'footer-content', componentUrl: 'components/footer.html' }

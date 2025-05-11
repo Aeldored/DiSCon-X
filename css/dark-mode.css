@@ -380,3 +380,46 @@
   .dark .dashboard-preview [style*="background-color: #e5e7eb"] {
     background-color: #e5e7eb !important;
   }
+
+  /* Header Dropdown Dark Mode Styles */
+  .dark .group-hover\:visible > div,
+  .dark .group > div {
+    background-color: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color);
+  }
+
+  .dark .group > div a {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark .group > div a:hover {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Fix dropdown button colors in dark mode */
+  .dark .nav-link {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark .nav-link:hover {
+    color: var(--primary) !important;
+  }
+
+  /* Fix chevron icon color */
+  .dark .nav-link .fa-chevron-down {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark .nav-link:hover .fa-chevron-down {
+    color: var(--primary) !important;
+  }
+
+  /* Mobile menu section labels in dark mode */
+  .dark #mobile-menu .text-gray-500 {
+    color: var(--text-muted) !important;
+  }
+
+  .dark #mobile-menu .border-gray-200 {
+    border-color: var(--border-color) !important;
+  }

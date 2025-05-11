@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DiSCon-X | DICT-CALABARZON Secure Connect</title>
     
-    <!-- Add to the head section -->
+    <!-- All the same meta tags and CSS imports from original -->
     <meta name="theme-color" content="#2563eb">
     <meta name="color-scheme" content="light dark">
     <meta name="description" content="DiSCon-X: DICT-CALABARZON Secure Connect - Protecting users from Wi-Fi security threats with real-time network verification">
@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
    
-    <!-- Add preload tags for critical resources -->
+    <!-- Preload tags -->
     <link rel="preload" href="components/header.html" as="fetch" crossorigin>
     <link rel="preload" href="components/hero.html" as="fetch" crossorigin>
     <link rel="preload" href="css/variables.css" as="style">
     <link rel="preload" href="css/base.css" as="style">
     
-    <!-- Application CSS -->
+    <!-- Application CSS - all original files -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/utility-to-components.css">
     <link rel="stylesheet" href="css/accessibility-enhancements.css">
-
   </head>
 
   <body class="bg-gray-50">
@@ -40,86 +39,88 @@
       Skip to main content
     </a>
 
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation - ORIGINAL COMPONENT -->
     <header class="fixed w-full bg-white shadow-sm z-50">
       <div class="container mx-auto px-4 py-3">
-        <!-- Include header content from components/header.html -->
         <div id="header-content"></div>
       </div>
     </header>
 
     <!-- Main Content -->
     <main id="main-content" class="overflow-hidden">
-      <!-- Hero Section -->
+      <!-- Hero Section - ORIGINAL COMPONENT -->
       <section class="pt-32 pb-20 gradient-bg relative" aria-labelledby="hero-title">
         <div id="hero-section"></div>
       </section>
       
-      <!-- Search Section -->
+      <!-- Search Section - ORIGINAL COMPONENT -->
       <section class="py-8 bg-white shadow-md relative z-10" aria-labelledby="search-title">
         <div id="search-section"></div>
       </section>
       
-      <!-- Features Section -->
+      <!-- Features Section - ORIGINAL COMPONENT -->
       <section id="features" class="py-20 bg-gray-50 relative overflow-hidden" aria-labelledby="features-title">
         <div id="features-section"></div>
       </section>
 
-      <!-- How It Works Section -->
+      <!-- How It Works Section - ORIGINAL COMPONENT -->
       <section id="how-it-works" class="py-20 bg-white">
         <div id="how-it-works-section"></div>
       </section>
 
-      <!-- Admin Dashboard Preview -->
-      <section class="py-20 bg-gray-900 text-white">
-        <div id="admin-dashboard-section"></div>
-      </section>
-
-      <!-- Testimonials -->
+      <!-- Testimonials - ORIGINAL COMPONENT -->
       <section id="testimonials" class="py-20 bg-gray-50">
         <div id="testimonials-section"></div>
       </section>
 
-      <!-- Community Features Section -->
-      <section id="community" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
-        <div id="community-features-section"></div>
-      </section>
-
-      <!-- Security Dashboard Section -->
-      <section id="dashboard" class="py-20 bg-white">
-        <div id="security-dashboard-section"></div>
-      </section>
-
-      <!-- AI Visualization Section -->
-      <section id="ai-insights" class="py-20 bg-gray-900 text-white">
-        <div id="ai-visualization-section"></div>
-      </section>
-
-      <!-- Achievement System Section -->
-      <section id="achievements" class="py-20 bg-gradient-to-r from-purple-500 to-blue-600 text-white">
-        <div id="achievement-system-section"></div>
-      </section>
-
-      <!-- FAQ Section -->
+      <!-- FAQ Section - ORIGINAL COMPONENT (but only show first 5) -->
       <section id="faq" class="py-20 bg-white relative overflow-hidden">
         <div id="faq-section"></div>
       </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-gray-50">
-        <div id="contact-section"></div>
+      <!-- Advanced Features Links (New Section) -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-2xl font-bold text-center mb-8">Explore More Features</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="pages/features.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-brain text-blue-600 text-2xl mr-3"></i>
+                <h3 class="font-bold">Advanced Features</h3>
+              </div>
+              <p class="text-gray-600">AI visualization, community features, security dashboard, and achievements</p>
+              <span class="text-blue-600 font-medium mt-2 inline-block">Learn more →</span>
+            </a>
+            <a href="pages/admin.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-cogs text-green-600 text-2xl mr-3"></i>
+                <h3 class="font-bold">For Administrators</h3>
+              </div>
+              <p class="text-gray-600">Access the web-based monitoring system and network management tools</p>
+              <span class="text-blue-600 font-medium mt-2 inline-block">Admin Portal →</span>
+            </a>
+            <a href="pages/resources.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-book text-purple-600 text-2xl mr-3"></i>
+                <h3 class="font-bold">Resources & Support</h3>
+              </div>
+              <p class="text-gray-600">Documentation, contact information, and additional resources</p>
+              <span class="text-blue-600 font-medium mt-2 inline-block">Get help →</span>
+            </a>
+          </div>
+        </div>
       </section>
 
-      <!-- Footer -->
+      <!-- Footer - ORIGINAL COMPONENT -->
       <footer class="bg-gray-900 text-white pt-20 pb-8">
         <div id="footer-content"></div>
       </footer>
 
-      <!-- Authentication Modal (Hidden by default) -->
+      <!-- Authentication Modal -->
       <div id="auth-modal-container"></div>
     </main>
 
-    <!-- Application Scripts -->
+    <!-- All original scripts -->
     <script src="js/utils/dom-utils.js"></script>
     <script src="js/utils/animation-utils.js"></script>
     <script src="js/components/mobile-menu.js"></script>
@@ -131,6 +132,7 @@
     <script src="js/components/form-validator.js"></script>
     <script src="js/components/animation-observer.js"></script>
     <script src="js/components/demo-modals.js"></script>
+    <script src="js/components/header-init.js"></script>
     <script src="js/app.js"></script>
     
     <!-- Component Loader -->

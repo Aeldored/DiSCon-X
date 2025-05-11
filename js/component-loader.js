@@ -1,6 +1,6 @@
 /**
  * DiSCon-X Component Loader
- * This script loads HTML components into the page
+ * This script loads HTML components into the page - Updated for multiple pages
  */
 
 // Component Loader Module
@@ -12,6 +12,7 @@ const ComponentLoader = (function() {
     function getComponentInfoById(id) {
       return componentInfoMap[id] || null;
     }
+    
     // Load a component via fetch
     async function fetchComponent(url) {
       // Check if component is already in cache
@@ -82,25 +83,51 @@ const ComponentLoader = (function() {
       }
     }
     
-    // Define components to load
-    const componentsToLoad = [
-      { containerId: 'header-content', componentUrl: 'components/header.html' },
-      { containerId: 'hero-section', componentUrl: 'components/hero.html' },
-      { containerId: 'search-section', componentUrl: 'components/search.html' },
-      { containerId: 'features-section', componentUrl: 'components/features.html' },
-      { containerId: 'how-it-works-section', componentUrl: 'components/how-it-works.html' },
-      { containerId: 'admin-dashboard-section', componentUrl: 'components/admin-dashboard.html' },
-      { containerId: 'testimonials-section', componentUrl: 'components/testimonials.html' },
-      { containerId: 'community-features-section', componentUrl: 'components/community-features.html' },
-      { containerId: 'security-dashboard-section', componentUrl: 'components/security-dashboard.html' },
-      { containerId: 'ai-visualization-section', componentUrl: 'components/ai-visualization.html' },
-      { containerId: 'achievement-system-section', componentUrl: 'components/achievement-system.html' },
-      { containerId: 'faq-section', componentUrl: 'components/faq.html' },
-      { containerId: 'contact-section', componentUrl: 'components/contact.html' },
-      { containerId: 'footer-content', componentUrl: 'components/footer.html' }
-    ];
+    // Define components to load based on current page
+    function getComponentsForPage() {
+      const path = window.location.pathname;
+      
+      // Handle pages in /pages/ directory
+      if (path.includes('/pages/features.html')) {
+        return [
+          { containerId: 'header-content', componentUrl: '../components/header.html' },
+          { containerId: 'community-features-section', componentUrl: '../components/community-features.html' },
+          { containerId: 'security-dashboard-section', componentUrl: '../components/security-dashboard.html' },
+          { containerId: 'ai-visualization-section', componentUrl: '../components/ai-visualization.html' },
+          { containerId: 'achievement-system-section', componentUrl: '../components/achievement-system.html' },
+          { containerId: 'footer-content', componentUrl: '../components/footer.html' }
+        ];
+      } else if (path.includes('/pages/admin.html')) {
+        return [
+          { containerId: 'header-content', componentUrl: '../components/header.html' },
+          { containerId: 'admin-dashboard-section', componentUrl: '../components/admin-dashboard.html' },
+          { containerId: 'footer-content', componentUrl: '../components/footer.html' }
+        ];
+      } else if (path.includes('/pages/resources.html')) {
+        return [
+          { containerId: 'header-content', componentUrl: '../components/header.html' },
+          { containerId: 'contact-section', componentUrl: '../components/contact.html' },
+          { containerId: 'footer-content', componentUrl: '../components/footer.html' }
+        ];
+      } else {
+        // Default for index.html (root level)
+        return [
+          { containerId: 'header-content', componentUrl: 'components/header.html' },
+          { containerId: 'hero-section', componentUrl: 'components/hero.html' },
+          { containerId: 'search-section', componentUrl: 'components/search.html' },
+          { containerId: 'features-section', componentUrl: 'components/features.html' },
+          { containerId: 'how-it-works-section', componentUrl: 'components/how-it-works.html' },
+          { containerId: 'testimonials-section', componentUrl: 'components/testimonials.html' },
+          { containerId: 'faq-section', componentUrl: 'components/faq.html' },
+          { containerId: 'footer-content', componentUrl: 'components/footer.html' }
+        ];
+      }
+    }
 
     function preloadComponentDimensions() {
+      // Get components for current page
+      const componentsToLoad = getComponentsForPage();
+      
       // Reserve space for components
       componentsToLoad.forEach(component => {
         const container = document.getElementById(component.containerId);
@@ -123,10 +150,11 @@ const ComponentLoader = (function() {
       });
     }
     
-    // Initialize - load all components
-    // Call this function before loading components
-
+    // Initialize - load all components based on current page
     function init() {
+      // Get components for current page
+      const componentsToLoad = getComponentsForPage();
+      
       // Map component info for later reference
       componentsToLoad.forEach(component => {
         componentInfoMap[component.containerId] = component;
@@ -152,7 +180,7 @@ const ComponentLoader = (function() {
       });
     }
     
-    // Expose the new function in the public API
+    // Expose public API
     return {
       init,
       loadComponent,
@@ -173,5 +201,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
-

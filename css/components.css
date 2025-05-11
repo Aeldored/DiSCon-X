@@ -121,6 +121,21 @@
     }
   }
   
+  /* Dropdown enhancements */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1;
+  }
+
+  .group:hover .group-hover\:visible {
+    visibility: visible;
+  }
+
+  /* Add arrow rotation on hover */
+  .group:hover .fa-chevron-down {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }
+
   /*======================================
     Feature Cards
   ======================================*/
@@ -645,4 +660,230 @@
   
   .dashboard-sidebar-icon.active {
     color: var(--primary);
+  }
+
+
+
+  /* Community Features Section - Dark Mode */
+  .dark #community {
+    background-color: var(--bg-primary) !important;
+  }
+
+  .dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+    background: var(--bg-primary) !important;
+  }
+
+  .dark #community .bg-white {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  .dark #community .text-gray-600,
+  .dark #community .text-gray-700 {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark #community .bg-gray-100 {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  .dark #community .border-red-200 {
+    border-color: var(--border-color) !important;
+  }
+
+  .dark #community .bg-red-50 {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+  }
+
+  .dark #community .text-red-700,
+  .dark #community .text-red-600 {
+    color: #fca5a5 !important;
+  }
+
+  /* Security Dashboard Section - Dark Mode */
+  .dark #dashboard {
+    background-color: var(--bg-primary) !important;
+  }
+
+  .dark #dashboard .bg-white {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  .dark #dashboard .text-gray-600 {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark #dashboard .bg-gradient-to-br {
+    opacity: 0.8;
+  }
+
+  .dark #dashboard .bg-gray-100,
+  .dark #dashboard .bg-gray-50 {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  .dark #dashboard .text-gray-900 {
+    color: var(--text-primary) !important;
+  }
+
+  .dark #dashboard .bg-gray-200 {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  /* AI Visualization Section - Already styled but ensure consistency */
+  .dark #ai-insights {
+    background-color: var(--bg-primary) !important;
+  }
+
+  /* Achievement System Section - Dark Mode */
+  .dark #achievements {
+    background-color: var(--bg-primary) !important;
+  }
+
+  .dark #achievements .bg-gradient-to-r {
+    opacity: 0.9;
+  }
+
+  .dark #achievements .bg-white {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  .dark #achievements .text-gray-900 {
+    color: var(--text-primary) !important;
+  }
+
+  .dark #achievements .text-gray-600,
+  .dark #achievements .text-gray-500 {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark #achievements .bg-gray-50 {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  .dark #achievements .text-gray-500 {
+    color: var(--text-muted) !important;
+  }
+
+  .dark #achievements .border-b {
+    border-color: var(--border-color) !important;
+  }
+
+  .dark #achievements .hover\:bg-gray-50:hover {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  /* Global fixes for advanced sections */
+  .dark .bg-gradient-to-r,
+  .dark .bg-gradient-to-br {
+    opacity: 0.9; /* Slightly reduce opacity of gradients in dark mode */
+  }
+
+  /* Specific fixes for community reporting forms */
+  .dark #community form input,
+  .dark #community form select,
+  .dark #community form textarea {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .dark #community form label {
+    color: var(--text-secondary) !important;
+  }
+
+  /* Fix for threat map indicators */
+  .dark #community .bg-blue-100 {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+
+  /* Fix hover states */
+  .dark #community .hover\:bg-gray-50:hover {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  /* Fix security score widget */
+  .dark #dashboard .bg-gradient-to-br.from-blue-500.to-indigo-600 {
+    background: linear-gradient(to bottom right, var(--primary), var(--secondary)) !important;
+  }
+
+  /* Fix achievement badges */
+  .dark #achievements .bg-blue-100,
+  .dark #achievements .bg-green-100,
+  .dark #achievements .bg-purple-100,
+  .dark #achievements .bg-yellow-100 {
+    opacity: 0.1;
+  }
+
+  .dark #achievements .text-blue-600,
+  .dark #achievements .text-green-600,
+  .dark #achievements .text-purple-600,
+  .dark #achievements .text-yellow-600 {
+    color: var(--text-primary) !important;
+  }
+
+  /* Ensure proper contrast for text on gradient backgrounds */
+  .dark .bg-gradient-to-r .text-white,
+  .dark .bg-gradient-to-br .text-white {
+    color: white !important;
+  }
+
+  /* Fix chart backgrounds */
+  .dark #security-chart {
+    background: var(--bg-tertiary) !important;
+  }
+
+  /* Fix community forum preview */
+  .dark #community .divide-y > * {
+    border-color: var(--border-color) !important;
+  }
+
+  .dark #community .hover\:bg-gray-50:hover {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  /* Fix badge colors in dark mode */
+  .dark .bg-red-100 {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+  }
+
+  .dark .bg-green-100 {
+    background-color: rgba(34, 197, 94, 0.1) !important;
+  }
+
+  .dark .bg-yellow-100 {
+    background-color: rgba(234, 179, 8, 0.1) !important;
+  }
+
+  .dark .bg-blue-100 {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+
+  .dark .bg-purple-100 {
+    background-color: rgba(147, 51, 234, 0.1) !important;
+  }
+
+  /* Fix text colors for badges */
+  .dark .text-red-600,
+  .dark .text-red-700 {
+    color: #fca5a5 !important;
+  }
+
+  .dark .text-green-600,
+  .dark .text-green-700 {
+    color: #86efac !important;
+  }
+
+  .dark .text-yellow-600,
+  .dark .text-yellow-700 {
+    color: #fde047 !important;
+  }
+
+  .dark .text-blue-600,
+  .dark .text-blue-700 {
+    color: #93c5fd !important;
+  }
+
+  .dark .text-purple-600,
+  .dark .text-purple-700 {
+    color: #c4b5fd !important;
   }

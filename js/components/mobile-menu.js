@@ -84,6 +84,7 @@ const MobileMenu = (function() {
           close();
         }
       });
+      
       // Add login/signup functionality to mobile menu buttons
       const mobileLoginBtn = elements.menu.querySelector('button:nth-of-type(1)');
       const mobileSignupBtn = elements.menu.querySelector('button:nth-of-type(2)');
@@ -99,6 +100,25 @@ const MobileMenu = (function() {
         mobileSignupBtn.addEventListener('click', function() {
           close(); // Close mobile menu
           AuthModal.showSignup(); // Open signup modal
+        });
+      }
+      
+      // Handle admin login link in desktop dropdown
+      const adminLoginLink = document.getElementById('admin-login-link');
+      if (adminLoginLink && typeof AuthModal !== 'undefined' && AuthModal.showLogin) {
+        adminLoginLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          AuthModal.showLogin();
+        });
+      }
+      
+      // Handle admin login link in mobile menu
+      const mobileAdminLoginLink = document.getElementById('mobile-admin-login-link');
+      if (mobileAdminLoginLink && typeof AuthModal !== 'undefined' && AuthModal.showLogin) {
+        mobileAdminLoginLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          close(); // Close mobile menu
+          AuthModal.showLogin();
         });
       }
     }

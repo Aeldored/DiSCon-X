@@ -84,50 +84,6 @@
         </div>
       </div>
 
-      <!-- Development Modal (initially hidden) -->
-      <div id="dev-modal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
-        
-        <!-- Modal Content -->
-        <div class="relative bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 max-w-md w-11/12 transform scale-90 transition-transform duration-300">
-          <!-- Header with icon -->
-          <div class="text-center mb-4">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 mb-4">
-              <i class="fas fa-tools text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Under Development</h3>
-          </div>
-          
-          <!-- Message -->
-          <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">
-            DiSCon-X is currently in active development. This application is a proof of concept to demonstrate potential cybersecurity solutions.
-          </p>
-          
-          <!-- Progress indicator -->
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-6">
-            <div class="bg-blue-600 h-2.5 rounded-full w-3/4"></div>
-          </div>
-          
-          <!-- Actions -->
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <button id="close-dev-modal" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors flex-1 flex items-center justify-center">
-              <i class="fas fa-check mr-2"></i>
-              Got it
-            </button>
-            <a href="{{basePath}}index.html#how-it-works" class="px-5 py-2.5 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-colors flex-1 flex items-center justify-center">
-              <i class="fas fa-info-circle mr-2"></i>
-              Learn More
-            </a>
-          </div>
-          
-          <!-- Close button -->
-          <button class="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors" id="close-x-btn">
-            <i class="fas fa-times text-xl"></i>
-          </button>
-        </div>
-      </div>
-      
       <!-- Enhanced user count display with animated counter effect -->
       <div class="mt-8 bg-blue-800 bg-opacity-25 p-3 rounded-lg flex items-center space-x-4 animate-fadeIn" style="animation-delay: 0.4s">
         <div class="flex -space-x-2">
@@ -427,6 +383,44 @@
             <i class="fas fa-check-circle"></i>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- Development Modal -->
+  <div id="dev-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+    <div class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm" id="dev-modal-backdrop"></div>
+    
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="relative bg-white rounded-xl shadow-2xl p-6 max-w-md w-full mx-auto transform transition-transform duration-300">
+        <div class="text-center mb-4">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+            <i class="fas fa-tools text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900">Under Development</h3>
+        </div>
+        
+        <p class="text-gray-600 mb-6 text-center">
+          DiSCon-X is currently in active development. This application is a proof of concept to demonstrate potential cybersecurity solutions.
+        </p>
+        
+        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+          <div class="bg-blue-600 h-2.5 rounded-full w-3/4"></div>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <button id="close-dev-modal" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors flex-1 flex items-center justify-center">
+            <i class="fas fa-check mr-2"></i>
+            Got it
+          </button>
+          <a href="#how-it-works" id="learn-more-modal-btn" class="px-5 py-2.5 border border-gray-300 hover:bg-gray-100 text-gray-700 font-medium rounded-lg transition-colors flex-1 flex items-center justify-center">
+            <i class="fas fa-info-circle mr-2"></i>
+            Learn More
+          </a>
+        </div>
+        
+        <button class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 transition-colors" id="close-x-btn">
+          <i class="fas fa-times text-xl"></i>
+        </button>
       </div>
     </div>
   </div>

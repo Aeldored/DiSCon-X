@@ -8,20 +8,27 @@ const DevelopmentModal = (function() {
     // Private variables
     const elements = {
       getProtectedBtn: null,
-      devModal: null,
-      closeDevModalBtn: null,
-      closeXBtn: null
+      modal: null,
+      backdrop: null,
+      closeBtn: null,
+      xBtn: null,
+      learnMoreBtn: null
     };
+    
+    // Store original scroll position
+    let scrollPosition = 0;
     
     // Initialize the module
     function init() {
       // Get DOM elements
       elements.getProtectedBtn = document.getElementById('get-protected-btn');
-      elements.devModal = document.getElementById('dev-modal');
-      elements.closeDevModalBtn = document.getElementById('close-dev-modal');
-      elements.closeXBtn = document.getElementById('close-x-btn');
+      elements.modal = document.getElementById('dev-modal');
+      elements.backdrop = document.getElementById('dev-modal-backdrop'); 
+      elements.closeBtn = document.getElementById('close-dev-modal');
+      elements.xBtn = document.getElementById('close-x-btn');
+      elements.learnMoreBtn = document.getElementById('learn-more-modal-btn');
       
-      if (!elements.getProtectedBtn || !elements.devModal) {
+      if (!elements.getProtectedBtn || !elements.modal) {
         console.error('Development modal elements not found');
         return;
       }
@@ -40,53 +47,101 @@ const DevelopmentModal = (function() {
         openModal();
       });
       
-      // Close modal buttons
-      if (elements.closeDevModalBtn) {
-        elements.closeDevModalBtn.addEventListener('click', closeModal);
-      }
+      // Close on backdrop click
+      elements.backdrop.addEventListener('click', closeModal);
       
-      if (elements.closeXBtn) {
-        elements.closeXBtn.addEventListener('click', closeModal);
-      }
+      // Close button
+      elements.closeBtn.addEventListener('click', closeModal);
       
-      // Close modal when clicking on backdrop
-      elements.devModal.addEventListener('click', function(e) {
-        if (e.target === elements.devModal) {
-          closeModal();
-        }
+      // X button
+      elements.xBtn.addEventListener('click', closeModal);
+      
+      // Learn More button
+      elements.learnMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        closeModal();
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
       });
       
-      // Close modal with Escape key
+      // Close with Escape key
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !elements.devModal.classList.contains('opacity-0')) {
+        if (e.key === 'Escape' && !elements.modal.classList.contains('hidden')) {
           closeModal();
         }
       });
     }
     
-    // Open modal
-    function openModal() {
-      // Prevent scrolling on the body
+    // Lock body scroll
+    function lockBodyScroll() {
+      // Save current scroll position
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Calculate scrollbar width
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
+      // Apply scroll lock styles
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = '100%';
+      
+      // Add padding to right to prevent layout shift when scrollbar disappears
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+    }
+    
+    // Unlock body scroll
+    function unlockBodyScroll() {
+      // Remove scroll lock styles
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.paddingRight = '';
+      
+      // Restore scroll position
+      window.scrollTo(0, scrollPosition);
+    }
+    
+    // Open the modal
+    function openModal() {
+      // Lock body scroll first
+      lockBodyScroll();
       
       // Show the modal
-      elements.devModal.classList.remove('opacity-0', 'pointer-events-none');
+      elements.modal.classList.remove('hidden');
       
-      // Scale up the modal content for nice animation
+      // Add entrance animation
+      const modalContent = elements.modal.querySelector('.transform');
+      modalContent.classList.add('scale-95', 'opacity-0');
+      
+      // Trigger animation after a tiny delay
       setTimeout(() => {
-        elements.devModal.querySelector('.transform').classList.remove('scale-90');
+        modalContent.classList.remove('scale-95', 'opacity-0');
       }, 10);
     }
     
-    // Close modal
+    // Close the modal
     function closeModal() {
-      // Scale down first (for animation)
-      elements.devModal.querySelector('.transform').classList.add('scale-90');
+      const modalContent = elements.modal.querySelector('.transform');
       
-      // Hide the modal
+      // Add exit animation
+      modalContent.classList.add('scale-95', 'opacity-0');
+      
+      // Wait for animation to complete
       setTimeout(() => {
-        elements.devModal.classList.add('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = '';
+        // Hide the modal
+        elements.modal.classList.add('hidden');
+        
+        // Restore body scrolling
+        unlockBodyScroll();
+        
+        // Reset animation state
+        modalContent.classList.remove('scale-95', 'opacity-0');
       }, 200);
     }
     

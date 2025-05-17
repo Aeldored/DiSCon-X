@@ -458,3 +458,59 @@
     background-color: var(--bg-tertiary) !important;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3) !important;
   }
+
+  /* Development Modal - Dark Mode */
+  .dark #dev-modal .bg-white {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  .dark #dev-modal .text-gray-900 {
+    color: var(--text-primary) !important;
+  }
+
+  .dark #dev-modal .text-gray-600 {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark #dev-modal .bg-gray-200 {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  .dark #dev-modal .bg-blue-100 {
+    background-color: rgba(37, 99, 235, 0.2) !important;
+  }
+
+  .dark #dev-modal .text-blue-600 {
+    color: #60a5fa !important; /* Lighter blue for better contrast in dark mode */
+  }
+
+  .dark #dev-modal .border-gray-300 {
+    border-color: var(--border-color) !important;
+  }
+
+  .dark #dev-modal .hover\:bg-gray-100:hover {
+    background-color: var(--bg-tertiary) !important;
+  }
+
+  .dark #dev-modal .text-gray-700 {
+    color: var(--text-secondary) !important;
+  }
+
+  /* Ensure smooth transitions between light and dark modes */
+  #dev-modal .bg-white,
+  #dev-modal .text-gray-900,
+  #dev-modal .text-gray-600,
+  #dev-modal .bg-gray-200,
+  #dev-modal .bg-blue-100,
+  #dev-modal .text-blue-600,
+  #dev-modal .border-gray-300,
+  #dev-modal .text-gray-700 {
+    transition: background-color var(--transition-normal), 
+                color var(--transition-normal), 
+                border-color var(--transition-normal);
+  }
+
+  /* Dev modal backdrop enhanced for dark mode */
+  .dark #dev-modal .bg-black {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }

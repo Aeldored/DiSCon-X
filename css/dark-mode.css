@@ -423,3 +423,38 @@
   .dark #mobile-menu .border-gray-200 {
     border-color: var(--border-color) !important;
   }
+
+  /* Fix feature links in dark mode */
+  .dark a.bg-white.p-6.rounded-lg {
+    background-color: var(--bg-secondary) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .dark a.bg-white.p-6.rounded-lg h3 {
+    color: var(--text-primary) !important;
+  }
+
+  .dark a.bg-white.p-6.rounded-lg p {
+    color: var(--text-secondary) !important;
+  }
+
+  .dark a.bg-white.p-6.rounded-lg span.text-blue-600 {
+    color: #60a5fa !important; /* Lighter blue for better contrast in dark mode */
+  }
+
+  .dark a.bg-white.p-6.rounded-lg i.text-blue-600 {
+    color: #60a5fa !important;
+  }
+
+  .dark a.bg-white.p-6.rounded-lg i.text-green-600 {
+    color: #4ade80 !important;
+  }
+
+  .dark a.bg-white.p-6.rounded-lg i.text-purple-600 {
+    color: #c084fc !important;
+  }
+
+  .dark a.bg-white.p-6.rounded-lg:hover {
+    background-color: var(--bg-tertiary) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3) !important;
+  }

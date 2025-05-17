@@ -1,6 +1,6 @@
 /**
  * DiSCon-X Component Loader
- * This script loads HTML components into the page - Updated for multiple pages
+ * This script loads HTML components into the page - Updated for GitHub Pages compatibility
  */
 
 // Component Loader Module
@@ -8,6 +8,42 @@ const ComponentLoader = (function() {
     // Private variables
     const componentCache = {};
     const componentInfoMap = {};
+    
+    /**
+     * Determines the correct base path for assets based on current URL
+     * This is crucial for GitHub Pages to resolve paths correctly
+     * @returns {string} The relative base path ('./' or '../')
+     */
+    function getBasePath() {
+      const path = window.location.pathname;
+      // If we're in a subdirectory like /pages/, we need to go up one level
+      if (path.includes('/pages/')) {
+        return '../';
+      }
+      // Check if we're in the repository root or project site
+      const pathSegments = path.split('/');
+      // If we're on the main page of a project site, add repository name if needed
+      if (pathSegments.length > 2 && !path.includes('/pages/')) {
+        return './';
+      }
+      // Default for root
+      return './';
+    }
+    
+    /**
+     * Gets the repository name from the path for GitHub Pages project sites
+     * Helps with constructing correct URLs
+     * @returns {string} The repository name or empty string
+     */
+    function getRepoName() {
+      const path = window.location.pathname;
+      const pathSegments = path.split('/');
+      // If we're not at root domain and have more than one path segment
+      if (pathSegments.length > 2) {
+        return pathSegments[1]; // First segment after domain is repo name
+      }
+      return '';
+    }
     
     function getComponentInfoById(id) {
       return componentInfoMap[id] || null;
@@ -83,9 +119,15 @@ const ComponentLoader = (function() {
       }
     }
     
-    // Define components to load based on current page
+    // Define components to load based on current page with proper relative paths
     function getComponentsForPage() {
       const path = window.location.pathname;
+      const basePath = getBasePath();
+      const repoContext = getRepoName() ? `/${getRepoName()}` : '';
+      
+      console.log(`Current path: ${path}`);
+      console.log(`Base path: ${basePath}`);
+      console.log(`Repository context: ${repoContext}`);
       
       // Handle pages in /pages/ directory
       if (path.includes('/pages/features.html')) {
@@ -112,14 +154,14 @@ const ComponentLoader = (function() {
       } else {
         // Default for index.html (root level)
         return [
-          { containerId: 'header-content', componentUrl: 'components/header.html' },
-          { containerId: 'hero-section', componentUrl: 'components/hero.html' },
-          { containerId: 'search-section', componentUrl: 'components/search.html' },
-          { containerId: 'features-section', componentUrl: 'components/features.html' },
-          { containerId: 'how-it-works-section', componentUrl: 'components/how-it-works.html' },
-          { containerId: 'testimonials-section', componentUrl: 'components/testimonials.html' },
-          { containerId: 'faq-section', componentUrl: 'components/faq.html' },
-          { containerId: 'footer-content', componentUrl: 'components/footer.html' }
+          { containerId: 'header-content', componentUrl: `${basePath}components/header.html` },
+          { containerId: 'hero-section', componentUrl: `${basePath}components/hero.html` },
+          { containerId: 'search-section', componentUrl: `${basePath}components/search.html` },
+          { containerId: 'features-section', componentUrl: `${basePath}components/features.html` },
+          { containerId: 'how-it-works-section', componentUrl: `${basePath}components/how-it-works.html` },
+          { containerId: 'testimonials-section', componentUrl: `${basePath}components/testimonials.html` },
+          { containerId: 'faq-section', componentUrl: `${basePath}components/faq.html` },
+          { containerId: 'footer-content', componentUrl: `${basePath}components/footer.html` }
         ];
       }
     }
@@ -150,8 +192,31 @@ const ComponentLoader = (function() {
       });
     }
     
+    /**
+     * Fixes relative paths in loaded components 
+     * Particularly important for components loaded in /pages/ directory
+     * @param {string} html - The component HTML
+     * @param {string} componentUrl - The URL of the component
+     * @returns {string} - HTML with fixed paths
+     */
+    function fixRelativePaths(html, componentUrl) {
+      // Only modify if we're in the pages directory
+      if (window.location.pathname.includes('/pages/')) {
+        // Fix paths that start with / to use relative paths instead
+        // This regex finds all attributes that likely contain URLs and fixes them
+        return html.replace(
+          /(src|href|data-src|data-href)=["']\/([^"']+)["']/g, 
+          `$1="../$2"`
+        );
+      }
+      return html;
+    }
+    
     // Initialize - load all components based on current page
     function init() {
+      // Detect GitHub Pages environment and log info
+      console.log("Initializing ComponentLoader for path: " + window.location.pathname);
+      
       // Get components for current page
       const componentsToLoad = getComponentsForPage();
       
@@ -185,7 +250,9 @@ const ComponentLoader = (function() {
       init,
       loadComponent,
       fetchComponent,
-      getComponentInfoById
+      getComponentInfoById,
+      getBasePath,
+      getRepoName
     };
 })();
   
@@ -199,5 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof DisconX !== 'undefined' && DisconX.initAfterComponentsLoaded) {
       DisconX.initAfterComponentsLoaded();
     }
+    
+    // Log completion
+    console.log("All components loaded successfully");
   });
 });

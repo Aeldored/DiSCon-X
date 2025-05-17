@@ -2,7 +2,7 @@
 <nav class="flex items-center justify-between">
     <!-- Logo -->
     <div class="flex items-center">
-      <a href="/index.html" class="flex items-center">
+      <a href="{{basePath}}index.html" class="flex items-center">
         <i class="fas fa-shield-alt text-blue-600 text-2xl mr-2"></i>
         <span class="font-bold text-xl text-gray-800">DiSCon-<span class="text-blue-600">X</span></span>
       </a>
@@ -11,7 +11,7 @@
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center space-x-8">
       <!-- Home Link -->
-      <a href="/index.html" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+      <a href="{{basePath}}index.html" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Home</a>
       
       <!-- About Dropdown -->
       <div class="relative group">
@@ -20,15 +20,15 @@
           <i class="fas fa-chevron-down ml-1 text-xs"></i>
         </button>
         <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-          <a href="/index.html#features" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}index.html#features" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-star-of-life mr-2 text-sm"></i>
             Features
           </a>
-          <a href="/index.html#how-it-works" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}index.html#how-it-works" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-cogs mr-2 text-sm"></i>
             How It Works
           </a>
-          <a href="/index.html#testimonials" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}index.html#testimonials" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-comments mr-2 text-sm"></i>
             Testimonials
           </a>
@@ -42,19 +42,19 @@
           <i class="fas fa-chevron-down ml-1 text-xs"></i>
         </button>
         <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-          <a href="/pages/features.html#community" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}pages/features.html#community" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-users mr-2 text-sm"></i>
             Community
           </a>
-          <a href="/pages/features.html#dashboard" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}pages/features.html#dashboard" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-tachometer-alt mr-2 text-sm"></i>
             Security Dashboard
           </a>
-          <a href="/pages/features.html#ai-insights" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}pages/features.html#ai-insights" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-brain mr-2 text-sm"></i>
             AI Visualization
           </a>
-          <a href="/pages/features.html#achievements" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}pages/features.html#achievements" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-trophy mr-2 text-sm"></i>
             Achievements
           </a>
@@ -68,7 +68,7 @@
           <i class="fas fa-chevron-down ml-1 text-xs"></i>
         </button>
         <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-          <a href="/pages/admin.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+          <a href="{{basePath}}pages/admin.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
             <i class="fas fa-desktop mr-2 text-sm"></i>
             Dashboard
           </a>
@@ -80,8 +80,8 @@
       </div>
       
       <!-- Direct Links -->
-      <a href="/index.html#faq" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
-      <a href="/pages/resources.html#contact" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+      <a href="{{basePath}}index.html#faq" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
+      <a href="{{basePath}}pages/resources.html#contact" class="nav-link text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
     </div>
   
     <!-- Authentication Buttons -->
@@ -111,7 +111,7 @@
   <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out" aria-label="Mobile menu" role="navigation">
     <div class="py-4 px-4 space-y-3">
       <!-- Home Link -->
-      <a href="/index.html" class="mobile-menu-item">
+      <a href="{{basePath}}index.html" class="mobile-menu-item">
         <span class="flex items-center">
           <i class="fas fa-home text-blue-600 mr-3 text-sm"></i>
           Home
@@ -121,19 +121,19 @@
       <!-- About Section -->
       <div class="border-b border-gray-200 pb-3">
         <p class="text-xs text-gray-500 uppercase tracking-wider mb-2">About</p>
-        <a href="/index.html#features" class="mobile-menu-item">
+        <a href="{{basePath}}index.html#features" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-star-of-life text-blue-600 mr-3 text-sm"></i>
             Features
           </span>
         </a>
-        <a href="/index.html#how-it-works" class="mobile-menu-item">
+        <a href="{{basePath}}index.html#how-it-works" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-cogs text-blue-600 mr-3 text-sm"></i>
             How It Works
           </span>
         </a>
-        <a href="/index.html#testimonials" class="mobile-menu-item">
+        <a href="{{basePath}}index.html#testimonials" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-comments text-blue-600 mr-3 text-sm"></i>
             Testimonials
@@ -144,25 +144,25 @@
       <!-- Advanced Section -->
       <div class="border-b border-gray-200 pb-3">
         <p class="text-xs text-gray-500 uppercase tracking-wider mb-2">Advanced Features</p>
-        <a href="/pages/features.html#community" class="mobile-menu-item">
+        <a href="{{basePath}}pages/features.html#community" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-users text-blue-600 mr-3 text-sm"></i>
             Community
           </span>
         </a>
-        <a href="/pages/features.html#dashboard" class="mobile-menu-item">
+        <a href="{{basePath}}pages/features.html#dashboard" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-tachometer-alt text-blue-600 mr-3 text-sm"></i>
             Security Dashboard
           </span>
         </a>
-        <a href="/pages/features.html#ai-insights" class="mobile-menu-item">
+        <a href="{{basePath}}pages/features.html#ai-insights" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-brain text-blue-600 mr-3 text-sm"></i>
             AI Visualization
           </span>
         </a>
-        <a href="/pages/features.html#achievements" class="mobile-menu-item">
+        <a href="{{basePath}}pages/features.html#achievements" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-trophy text-blue-600 mr-3 text-sm"></i>
             Achievements
@@ -173,7 +173,7 @@
       <!-- Admin Section -->
       <div class="border-b border-gray-200 pb-3">
         <p class="text-xs text-gray-500 uppercase tracking-wider mb-2">Admin</p>
-        <a href="/pages/admin.html" class="mobile-menu-item">
+        <a href="{{basePath}}pages/admin.html" class="mobile-menu-item">
           <span class="flex items-center">
             <i class="fas fa-desktop text-blue-600 mr-3 text-sm"></i>
             Dashboard
@@ -188,13 +188,13 @@
       </div>
       
       <!-- Other Links -->
-      <a href="/index.html#faq" class="mobile-menu-item">
+      <a href="{{basePath}}index.html#faq" class="mobile-menu-item">
         <span class="flex items-center">
           <i class="fas fa-question-circle text-blue-600 mr-3 text-sm"></i>
           FAQ
         </span>
       </a>
-      <a href="/pages/resources.html#contact" class="mobile-menu-item">
+      <a href="{{basePath}}pages/resources.html#contact" class="mobile-menu-item">
         <span class="flex items-center">
           <i class="fas fa-envelope text-blue-600 mr-3 text-sm"></i>
           Contact

@@ -82,6 +82,7 @@ discon-x/
 │   │   └── ...
 │   ├── utils/          # Helper functions
 │   └── app.js          # Main application logic
+├── img/                # All image Resource
 ├── components/         # HTML component fragments
 │   ├── header.html     # Navigation and header content
 │   ├── hero.html       # Hero section with main messaging
